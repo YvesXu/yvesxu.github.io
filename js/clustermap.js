@@ -1,1 +1,0 @@
-<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=v4qtyrYeSP-6M6LVURR3DNCn1ECpFrFWUQt2Dw1wOME"></script>
