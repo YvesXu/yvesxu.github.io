@@ -5,9 +5,9 @@
   <subtitle>技术·生活·人间值得</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.yvesxu.com/"/>
   <updated>2020-06-17T01:39:36.346Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.yvesxu.com/</id>
   
   <author>
     <name>YvesXu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/06/17/hello-world/"/>
-    <id>http://yoursite.com/2020/06/17/hello-world/</id>
+    <link href="http://www.yvesxu.com/2020/06/17/hello-world/"/>
+    <id>http://www.yvesxu.com/2020/06/17/hello-world/</id>
     <published>2020-06-17T01:39:36.346Z</published>
     <updated>2020-06-17T01:39:36.346Z</updated>
     
