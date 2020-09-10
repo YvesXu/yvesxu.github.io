@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yvesxu.com/"/>
-  <updated>2020-09-10T14:12:52.975Z</updated>
+  <updated>2020-09-10T15:19:47.207Z</updated>
   <id>http://www.yvesxu.com/</id>
   
   <author>
@@ -17,17 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>20200910-detectron2-02-demo</title>
-    <link href="http://www.yvesxu.com/2020/09/10/20200910-detectron2-02-demo/"/>
-    <id>http://www.yvesxu.com/2020/09/10/20200910-detectron2-02-demo/</id>
+    <title>detectron2 源码阅读系列 02 Demo.py</title>
+    <link href="http://www.yvesxu.com/2020/09/10/20200911-detectron2-02-demo/"/>
+    <id>http://www.yvesxu.com/2020/09/10/20200911-detectron2-02-demo/</id>
     <published>2020-09-10T14:12:52.000Z</published>
-    <updated>2020-09-10T14:12:52.975Z</updated>
+    <updated>2020-09-10T15:19:47.207Z</updated>
     
     <summary type="html">
     
     </summary>
     
     
+      <category term="detectron2" scheme="http://www.yvesxu.com/categories/detectron2/"/>
+    
+    
+      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="深度学习" scheme="http://www.yvesxu.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="pytorch" scheme="http://www.yvesxu.com/tags/pytorch/"/>
     
   </entry>
   
