@@ -20,18 +20,18 @@
     var CONFIG = {"hostname":"www.yvesxu.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="蝉鸣低语">
-<meta property="og:url" content="http://www.yvesxu.com/gossip/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="20200910-detectron2-02-demo">
+<meta property="og:url" content="http://www.yvesxu.com/2020/09/10/20200910-detectron2-02-demo/index.html">
 <meta property="og:site_name" content="YvesXu">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-18T10:15:24.000Z">
-<meta property="article:modified_time" content="2020-07-01T14:18:39.181Z">
+<meta property="article:published_time" content="2020-09-10T14:12:52.000Z">
+<meta property="article:modified_time" content="2020-09-10T14:12:52.975Z">
 <meta property="article:author" content="YvesXu">
 <meta property="article:tag" content="算法, 计算机视觉, 深度学习, Detectron2,">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.yvesxu.com/gossip/">
+<link rel="canonical" href="http://www.yvesxu.com/2020/09/10/20200910-detectron2-02-demo/">
 
 
 <script id="page-configurations">
@@ -39,13 +39,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>蝉鸣低语 | YvesXu
-</title>
+  <title>20200910-detectron2-02-demo | YvesXu</title>
   
 
 
@@ -195,47 +194,160 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/09/10/20200910-detectron2-02-demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/asset/avatar.jpg">
+      <meta itemprop="name" content="YvesXu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YvesXu">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20200910-detectron2-02-demo
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">蝉鸣低语
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-<div class="post-meta">
+              <time title="创建时间：2020-09-10 22:12:52" itemprop="dateCreated datePublished" datetime="2020-09-10T22:12:52+08:00">2020-09-10</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/10/20200910-detectron2-02-demo/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/10/20200910-detectron2-02-demo/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 
-</div>
+        </div>
+      </header>
 
-</header>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
       
-      
-      <div class="post-body">
-          
+      <div style="display: inline-block;">
+        <img src="/asset/wechatpay.png" alt="YvesXu 微信支付">
+        <p>微信支付</p>
       </div>
       
-      
-      
-    </div>
-    
+      <div style="display: inline-block;">
+        <img src="/asset/alipay.png" alt="YvesXu 支付宝">
+        <p>支付宝</p>
+      </div>
 
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>YvesXu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yvesxu.com/2020/09/10/20200910-detectron2-02-demo/" title="20200910-detectron2-02-demo">http://www.yvesxu.com/2020/09/10/20200910-detectron2-02-demo/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/asset/wechat_channel.png">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/10/20200910-detectron2-01-installation/" rel="prev" title="detectron2 源码阅读01 安装流程">
+      <i class="fa fa-chevron-left"></i> detectron2 源码阅读01 安装流程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
