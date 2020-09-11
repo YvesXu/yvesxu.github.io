@@ -20,18 +20,22 @@
     var CONFIG = {"hostname":"www.yvesxu.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="上一篇通过demo.py运行得到了一个检测的结果，这次深入到demo文件里面，分析整体框架的搭建。核心功能就是通过获取运行参数中的输入，进行结果预测，并输出可视化结果。demo.py的调用关系如下图所示  1. demo.py 文件概览文件主要包含三个函数  主函数 get_parser() setup_cfg(args)  1.1 主函数总体流程   mp.set_start_method()设">
+<meta property="og:type" content="article">
 <meta property="og:title" content="detectron2 源码阅读系列 02 Demo.py">
 <meta property="og:url" content="http://www.yvesxu.com/2020/09/10/20200911-detectron2-02-demo/index.html">
 <meta property="og:site_name" content="YvesXu">
+<meta property="og:description" content="上一篇通过demo.py运行得到了一个检测的结果，这次深入到demo文件里面，分析整体框架的搭建。核心功能就是通过获取运行参数中的输入，进行结果预测，并输出可视化结果。demo.py的调用关系如下图所示  1. demo.py 文件概览文件主要包含三个函数  主函数 get_parser() setup_cfg(args)  1.1 主函数总体流程   mp.set_start_method()设">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/detectron2/20200911_demo_frame.png">
 <meta property="article:published_time" content="2020-09-10T14:12:52.000Z">
-<meta property="article:modified_time" content="2020-09-10T15:19:47.207Z">
+<meta property="article:modified_time" content="2020-09-11T09:41:28.758Z">
 <meta property="article:author" content="YvesXu">
 <meta property="article:tag" content="源码阅读">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="pytorch">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/detectron2/20200911_demo_frame.png">
 
 <link rel="canonical" href="http://www.yvesxu.com/2020/09/10/20200911-detectron2-02-demo/">
 
@@ -226,10 +230,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-10 22:12:52 / 修改时间：23:19:47" itemprop="dateCreated datePublished" datetime="2020-09-10T22:12:52+08:00">2020-09-10</time>
+              <time title="创建时间：2020-09-10 22:12:52" itemprop="dateCreated datePublished" datetime="2020-09-10T22:12:52+08:00">2020-09-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-11 17:41:28" itemprop="dateModified" datetime="2020-09-11T17:41:28+08:00">2020-09-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -272,7 +282,81 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>上一篇通过<code>demo.py</code>运行得到了一个检测的结果，这次深入到demo文件里面，分析整体框架的搭建。核心功能就是通过获取运行参数中的输入，进行结果预测，并输出可视化结果。<code>demo.py</code>的调用关系如下图所示</p>
+<p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/detectron2/20200911_demo_frame.png" alt="demo结构"></p>
+<h3 id="1-demo-py-文件概览"><a href="#1-demo-py-文件概览" class="headerlink" title="1. demo.py 文件概览"></a>1. demo.py 文件概览</h3><p>文件主要包含三个函数</p>
+<ul>
+<li>主函数</li>
+<li><code>get_parser()</code></li>
+<li><code>setup_cfg(args)</code></li>
+</ul>
+<h4 id="1-1-主函数"><a href="#1-1-主函数" class="headerlink" title="1.1 主函数"></a>1.1 主函数</h4><p>总体流程</p>
+<hr>
+<ol>
+<li><code>mp.set_start_method()</code>设置多线程操作</li>
+<li><code>get_parser()</code> 函数获取参数，存入<code>args</code> </li>
+<li><code>setup_logger()</code>函数设置日志文件</li>
+<li><code>logger</code> 记录参数信息</li>
+<li><code>setup_cfg(arg)</code> 将获取的参数进行设置，存入<code>cfg</code></li>
+<li>创建<code>VisualizationDemo</code>类的实例为<code>demo</code></li>
+<li>如果输入是图像<code>(args.input)</code></li>
+<li>​    如果输入时单张图片:</li>
+<li>​        确认指定路径下的文件存在</li>
+<li>​    遍历<code>args.input</code>:</li>
+<li>​        使用<code>read_image</code>读取路径下的图片</li>
+<li>​        记录开始时间</li>
+<li>​        调用<code>demo.run_on_image</code>得到预测结果<code>predictions</code>和可视化结果<code>visualized_output</code>，并记录日志信息（<code>predictions</code>预测到多少实例，预测花费时间）</li>
+<li>​        如果需要保存结果<code>args.output</code>:</li>
+<li>​            将可视化结果进行保存</li>
+<li>​        否则利用窗口进行展示，按<code>esc</code>键退出</li>
+<li>如果输入是网络摄像头<code>(args.webcam)</code>:</li>
+<li>​    确认不包含图片输入<code>args.input</code>，且没有输出参数<code>args.output</code></li>
+<li>​    设置摄像头为<code>cam</code>，并在上面运行<code>demo.run_on_video</code></li>
+<li>​    针对每帧图片的预测结果，窗口显示1ms，按<code>esc</code>键退出，退出后释放网络摄像头，关闭所有窗口</li>
+<li>如果输入是视频<code>(args.video_input)</code></li>
+<li>​    将视频读进<code>video</code>，获取视频的尺寸信息<code>width</code>和<code>height</code>, 帧率<code>frames_per_second</code>，总帧数<code>num_frams</code>，</li>
+<li>​    在<code>video</code>上运行<code>demo.run_on_video</code>，如果需要输出，则写入<code>output_file</code>，否则通过窗口显示结果，按<code>esc</code>键退出。运行后释放输入输出视频，关闭所有窗口。</li>
+</ol>
+<hr>
+<h4 id="1-2-get-parser-函数"><a href="#1-2-get-parser-函数" class="headerlink" title="1.2 get_parser() 函数"></a>1.2 <code>get_parser()</code> 函数</h4><p>这个函数的核心功能是利用系统的<code>argparse</code>模块进行参数解析，主要创建<code>ArgumentParser</code>对象，调用<code>.add_argument()</code>方法定义参数，使用<code>.parse_args()</code>进行参数解析三个步骤。第三个步骤在主函数里面调用，因此这个函数核心代码就只包含对象创建以及添加参数，最后返回<code>ArgumentParser</code>对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_parser</span>():</span></span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument()</span><br></pre></td></tr></table></figure>
+<p>这里添加的参数有</p>
+<ul>
+<li><code>--config-file</code> 配置文件位置</li>
+<li><code>--webcam</code> 网络摄像头</li>
+<li><code>--video-input</code> 视频路径</li>
+<li><code>--input</code> 输入图片路径</li>
+<li><code>--output</code> 可视化结果输出位置，如果为赋值，则通过窗口显示</li>
+<li><code>--confidence-threshold</code> 显示实例预测的最小阈值</li>
+<li><code>--opts</code> 其他可选配置</li>
+</ul>
+<h4 id="1-3-setup-cfg-args-函数"><a href="#1-3-setup-cfg-args-函数" class="headerlink" title="1.3 setup_cfg(args)函数"></a>1.3 <code>setup_cfg(args)</code>函数</h4><p>前面<code>get_parser()</code> 函数返回的是一个参数解析器，主函数调用<code>.parse_args()</code>进行参数解析后得到<code>args</code>是一个<code>namespace</code>，指定了对应的配置文件，还需要将配置文件的参数进行解析。</p>
+<p>首先构建了一个默认的<code>CfgNode</code>对象，主要用来存放基本的网络参数配置，通过调用<code>.merge_from_file()</code> 和 <code>.merge_from_list()</code>两个方法解析<code>args</code>的指定的配置文件，对默认数值进行更新。</p>
+<h3 id="2-Predictor-py文件概览"><a href="#2-Predictor-py文件概览" class="headerlink" title="2. Predictor.py文件概览"></a>2. <code>Predictor.py</code>文件概览</h3><p>从上面的总体流程中可以看出，<code>demo.py</code>的核心功能是通过<code>VisualizationDemo</code> 类实现的，这个类在同目录下的<code>predictor.py</code> 文件中。这个文件内部主要包含两个类：</p>
+<ul>
+<li><p><code>VisualizationDemo</code></p>
+</li>
+<li><p><code>AsyncPredictor</code>  </p>
+</li>
+</ul>
+<h4 id="2-1-VisualizationDemo-类"><a href="#2-1-VisualizationDemo-类" class="headerlink" title="2.1 VisualizationDemo 类"></a>2.1 <code>VisualizationDemo</code> 类</h4><p>内部定义了以下四个函数：</p>
+<ul>
+<li><code>__init__()</code></li>
+<li><code>run_on_image()</code></li>
+<li><code>run_on_video()</code></li>
+<li><code>_frame_from_video()</code></li>
+</ul>
+<h5 id="2-1-1-init"><a href="#2-1-1-init" class="headerlink" title="2.1.1 __init__()"></a>2.1.1 <code>__init__()</code></h5><p>定义了预测参数，并根据并行处理需求将<code>predictor</code>设置为默认预测器<code>DefaultPredictor</code>或者并行预测器<code>AsyncPredictor</code>。</p>
+<h5 id="2-1-2-run-on-image-self-image"><a href="#2-1-2-run-on-image-self-image" class="headerlink" title="2.1.2 run_on_image(self, image)"></a>2.1.2 <code>run_on_image(self, image)</code></h5><ul>
+<li>输入：图像（H, W, C）图像模式 (BGR)</li>
+<li>输出：网络输出结果<code>predictions</code>, 可视化结果<code>vis_output</code>，可视化结果是<code>Visualizer</code>对象。</li>
+</ul>
+<h5 id="2-1-3-frame-from-video-self-video"><a href="#2-1-3-frame-from-video-self-video" class="headerlink" title="2.1.3 _frame_from_video(self, video)"></a>2.1.3 <code>_frame_from_video(self, video)</code></h5><p>获取视频帧</p>
+<h5 id="2-1-4-run-on-video-self-video"><a href="#2-1-4-run-on-video-self-video" class="headerlink" title="2.1.4 run_on_video(self, video)"></a>2.1.4 <code>run_on_video(self, video)</code></h5><p>调用<code>_frame_from_video</code> 方法获取视频帧，对每一帧进行预测，并通过内置的<code>process_predictions</code>方法，创建<code>Visualizer</code>对象，对结果进行展示。</p>
+<h4 id="2-2-AsyncPredictor类"><a href="#2-2-AsyncPredictor类" class="headerlink" title="2.2 AsyncPredictor类"></a>2.2 <code>AsyncPredictor</code>类</h4><p>主要是针对多GPU预测进行了处理，每个GPU上构建一个默认预测器<code>DefaultPredictor</code>，分别进行预测。</p>
+<h4 id="2-3-DefaultPredictor-类"><a href="#2-3-DefaultPredictor-类" class="headerlink" title="2.3. DefaultPredictor 类"></a>2.3. <code>DefaultPredictor</code> 类</h4><p>不论是单GPU，还是多GPU，最后的预测器都调用了<code>DefaultPredictor</code> 类，该类位于<code>detectron2\engine\defaults.py</code>中，内部只有初始化函数<code>__init__</code>和回调函数<code>__call__</code>，核心功能是通过给定参数构建端到端的网络，对输入图像进行<code>Transfrom</code>后，并送入网络模型，预测结果。</p>
+<p>demo的功能浏览完了，接下去的内容会从<code>Dataloader</code>开始，构建模型，评估测试，最终结果可视化。</p>
+
     </div>
 
     
@@ -411,6 +495,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-demo-py-%E6%96%87%E4%BB%B6%E6%A6%82%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">1. demo.py 文件概览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%B8%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 主函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-get-parser-%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 get_parser() 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-setup-cfg-args-%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 setup_cfg(args)函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Predictor-py%E6%96%87%E4%BB%B6%E6%A6%82%E8%A7%88"><span class="nav-number">2.</span> <span class="nav-text">2. Predictor.py文件概览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-VisualizationDemo-%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 VisualizationDemo 类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-init"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 __init__()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-run-on-image-self-image"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 run_on_image(self, image)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-3-frame-from-video-self-video"><span class="nav-number">2.1.3.</span> <span class="nav-text">2.1.3 _frame_from_video(self, video)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-4-run-on-video-self-video"><span class="nav-number">2.1.4.</span> <span class="nav-text">2.1.4 run_on_video(self, video)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-AsyncPredictor%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 AsyncPredictor类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-DefaultPredictor-%E7%B1%BB"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. DefaultPredictor 类</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
