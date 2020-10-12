@@ -234,7 +234,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-12 13:23:15 / 修改时间：16:57:33" itemprop="dateCreated datePublished" datetime="2020-10-12T13:23:15+08:00">2020-10-12</time>
+              <time title="创建时间：2020-10-12 13:23:15 / 修改时间：22:09:33" itemprop="dateCreated datePublished" datetime="2020-10-12T13:23:15+08:00">2020-10-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,16 +271,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="is-和-“-”-的概念"><a href="#is-和-“-”-的概念" class="headerlink" title="is 和 “==” 的概念"></a><code>is</code> 和 “==” 的概念</h4><p><code>==</code>比较的是两个对象的“值“是否相等<br><code>is</code>比较的是两个对象在内存中的地址是否相同（值相等，内存一致，可以理解为<code>id(a) == id(b)</code>）<br>代码示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">19260817</span></span><br><span class="line">b = <span class="number">19260817</span></span><br><span class="line">c = a </span><br><span class="line">print(a == b)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 地址不一致, 返回False</span></span><br><span class="line">print(a == c)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> c)</span><br><span class="line"><span class="comment"># 地址一致, 返回True</span></span><br></pre></td></tr></table></figure>
-<h4 id="其他关于is的注意事项："><a href="#其他关于is的注意事项：" class="headerlink" title="其他关于is的注意事项："></a>其他关于<code>is</code>的注意事项：</h4><ul>
-<li>为了提升性能, python将<font color=#0087BB>$[-5, 256]$</font>区间内的整数放在了<code>small_ints</code>中,需要用到的时候直接从里面取值, 而不是创造新的对象, 因此区间内的对象只要数值相同, 他们的地址也相同。</li>
-<li>类似的, 为了提高字符串利用效率, python使用了intern(字符串驻留)机制, 将<font color=#0087BB>长度不超过20, 且仅由下划线、数字、字母组成的字符串</font>以<code>&#123;string: id(string)&#125;</code>的字典形式存储, 相同字符串使用同一个地址。(在<code>Pycharm</code>和<code>VS code</code>等IDE中, 只要字符串<font color=#0087BB>长度不超过20</font>, 就会采用上述形式存储。)</li>
-<li>和<code>None</code>比较时使用<code>is</code>, <code>None</code>也是有专门的地址, 因此只要变量是<code>None</code>, 均是同一个地址。<br>代码示例:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">52</span></span><br><span class="line">b = <span class="number">52</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 数值在[-5, 256]区间内, 返回True</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">520</span></span><br><span class="line">b = <span class="number">520</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 数值不在[-5, 256]区间内, 返回False</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;ab&quot;</span></span><br><span class="line">b = <span class="string">&quot;ab&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 满足`intern`机制要求, 返回True</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;a b&quot;</span></span><br><span class="line">b = <span class="string">&quot;a b&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 不一定满足`intern`机制要求, 在python终端中返回False, Pycharm中返回True</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># a是字符串对象, 有自己的地址, 返回False</span></span><br><span class="line"></span><br><span class="line">b = <span class="literal">None</span></span><br><span class="line">print(b <span class="keyword">is</span> <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 返回True</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>参考资料：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26442553/article/details/82195061">https://blog.csdn.net/qq_26442553/article/details/82195061</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/greatfish/p/6045088.html">https://www.cnblogs.com/greatfish/p/6045088.html</a></p>
-
+          <h4 id="is-和-“-”-的概念"><a href="#is-和-“-”-的概念" class="headerlink" title="is 和 “==” 的概念"></a><code>is</code> 和 “==” 的概念</h4><p><code>==</code>比较的是两个对象的“值“是否相等<br><code>is</code>比较的是两个对象在内存中的地址是否相同（值相等，内存一致，可以理解为<code>id(a) == id(b)</code>）</p>
+<p><strong>代码示例</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">19260817</span></span><br><span class="line">b = <span class="number">19260817</span></span><br><span class="line">c = a </span><br><span class="line">print(a == b)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 地址不一致, 返回False</span></span><br><span class="line">print(a == c)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> c)</span><br><span class="line"><span class="comment"># 地址一致, 返回True</span></span><br></pre></td></tr></table></figure><br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/12/20201012-python-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -330,7 +330,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-12 10:52:11" itemprop="dateModified" datetime="2020-10-12T10:52:11+08:00">2020-10-12</time>
+                <time title="修改时间：2020-10-12 22:08:16" itemprop="dateModified" datetime="2020-10-12T22:08:16+08:00">2020-10-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -378,18 +378,14 @@
 <p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/alg/20200928_tree_01.png" alt="树"></p>
 <p>这棵树可以理解为带有多个$next$指针的链表，例如$3$ 号结点后面有$2$个$next$指针，分别指向结点$6$和结点$7$。</p>
 <p>如果树中每个结点的子树不超过$2$棵，并且$2$棵子树有左右之分，则把这种树称为二叉树。为了方便讨论，同时考虑到大量的算法题也是基于也是针对后面以二叉树为主，因此后续以二叉树作为讨论对象。</p>
-<p>在<code>LeetCode</code>中，二叉树的<code>C++</code> 和 <code>Python</code>结构如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* C++ 下的二叉树结构体*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode() : val(<span class="number">0</span>), left(<span class="literal">nullptr</span>), right(<span class="literal">nullptr</span>)&#123;&#125;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">nullptr</span>), right(<span class="literal">nullptr</span>)&#123;&#125;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right)&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python下的二叉树类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=None, right=None</span>):</span></span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
-<p>这里也画了二叉树的结构，左右子树各一个指针，指向自己的子树。这个结构本身就具有递归的性质，因此很多相应的问题可以用递归的思路来解决。<br><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/alg/20200928_tree_02.png" alt="二叉树"></p>
-<h3 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h3><ol>
-<li>二叉树第$i$层最多有$2^{i-1}$个结点（根节点记为第一层，即$i\geq1$）</li>
-<li>高度为$k$的二叉树，最多拥有$2^k-1$个结点($k\geq1$,计算过程：$num_{node}\leq1+2+4+…+2^{k-1}=2^k-1$  )</li>
-<li>根据性质2可以倒推，拥有$n$个结点的二叉树，高度最少为$log_2(n+1)$</li>
-<li>在任意二叉树下，一共有$n$个结点，$n-1$条边，若叶子结点个数记为$n_0$，有一个孩子的结点(对应一条边)个数为$n_1$，两个孩子结点(对应两条边)的个数记为$n_2$，则可以得出$n_0+n_1+n_2(结点数量) = 2\times n_2+n_1(边的数量)+1$，整理可以得到$n_0 = n_2 + 1$，主要会在选择题中考察。<br><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/alg/20200928_tree_03.png" alt="二叉树结构"></li>
-</ol>
-<h3 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h3><p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/alg/20200928_tree_04.png" alt="二叉树遍历"></p>
-<p>[1]严蔚敏, 吴伟民. 清华大学计算机系列教材 :数据结构[M]// 清华大学计算机系列教材 ：数据结构. 清华大学出版社, 2011.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/28/20200928-alg-01-tree-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -439,7 +435,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-09 16:33:46" itemprop="dateModified" datetime="2020-10-09T16:33:46+08:00">2020-10-09</time>
+                <time title="修改时间：2020-10-12 22:10:05" itemprop="dateModified" datetime="2020-10-12T22:10:05+08:00">2020-10-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -479,86 +475,14 @@
           <p>上一篇通过<code>demo.py</code>运行得到了一个检测的结果，这次深入到demo文件夹中，分析整体框架的搭建。该文件夹一共有两个文件，分别是<code>demo.py</code> 和<code>predictor.py</code>，核心功能就是通过获取运行参数中的输入，进行结果预测，并输出可视化结果。</p>
 <p><code>demo.py</code>的调用关系如下图所示</p>
 <p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/detectron2/20200911_demo_frame.png" alt="demo结构"></p>
-<h3 id="demo-py-文件概览"><a href="#demo-py-文件概览" class="headerlink" title="demo.py 文件概览"></a>demo.py 文件概览</h3><p>文件主要包含三个函数</p>
-<ul>
-<li>主函数</li>
-<li><code>get_parser()</code></li>
-<li><code>setup_cfg(args)</code></li>
-</ul>
-<h4 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h4><p>总体流程</p>
-<ol>
-<li><code>multiprocessing.set_start_method()</code>设置多线程操作</li>
-<li>自定义的<code>get_parser()</code> 函数获取参数，存入<code>args</code> </li>
-<li>自定义的<code>setup_logger()</code>函数设置日志文件</li>
-<li>使用<code>logger.info()</code> 记录参数信息</li>
-<li>自定义的<code>setup_cfg(arg)</code> 将获取的参数进行设置，存入<code>cfg</code></li>
-<li>创建<font color=#0087BB><code>VisualizationDemo</code></font>类的实例为<font color=#0087BB><code>demo</code></font></li>
-<li>如果输入是图像<code>(args.input)</code><ol>
-<li>如果输入时单张图片，确认指定路径下的文件存在</li>
-<li>遍历<code>args.input</code>:<ol>
-<li>使用<code>read_image()</code>读取路径下的图片</li>
-<li>记录开始时间</li>
-<li>调用<font color=#0087BB><code>demo.run_on_image</code></font>得到预测结果<code>predictions</code>和可视化结果<code>visualized_output</code>，并记录日志信息（<code>predictions</code>预测到多少实例，预测花费时间）</li>
-<li>如果需要保存结果，则将可视化结果进行保存至<code>args.output</code></li>
-<li>否则利用窗口进行展示，按<code>esc</code>键退出</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>如果输入是网络摄像头<code>(args.webcam)</code>:<ol>
-<li>确认不包含图片输入<code>args.input</code>，且没有输出参数<code>args.output</code></li>
-<li>设置摄像头为<code>cam</code>，并在上面运行<font color=#0087BB><code>demo.run_on_video</code></font></li>
-<li>针对每帧图片的预测结果，窗口显示1ms，按<code>esc</code>键退出，退出后释放网络摄像头，关闭所有窗口</li>
-</ol>
-</li>
-<li>如果输入是视频<code>(args.video_input)</code><ol>
-<li>将视频读进<code>video</code>，获取视频的尺寸信息<code>width</code>和<code>height</code>, 帧率<code>frames_per_second</code>，总帧数<code>num_frams</code>，</li>
-<li>在<code>video</code>上运行<font color=#0087BB><code>demo.run_on_video</code></font>，如果需要输出，则写入<code>output_file</code>，否则通过窗口显示结果，按<code>esc</code>键退出。运行后释放输入输出视频，关闭所有窗口。</li>
-</ol>
-</li>
-</ol>
-<h4 id="参数解析的get-parser-函数"><a href="#参数解析的get-parser-函数" class="headerlink" title="参数解析的get_parser() 函数"></a>参数解析的<code>get_parser()</code> 函数</h4><p>这个函数的核心功能是利用系统的<code>argparse</code>模块进行参数解析，主要创建<code>ArgumentParser</code>对象，调用<code>.add_argument()</code>方法定义参数，使用<code>.parse_args()</code>进行参数解析三个步骤。第三个步骤在主函数里面调用，因此这个函数核心代码就只包含对象创建以及添加参数，最后返回<code>ArgumentParser</code>对象。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_parser</span>():</span></span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument()</span><br></pre></td></tr></table></figure>
-<p>这里添加的参数有</p>
-<ul>
-<li><code>--config-file</code> 配置文件位置</li>
-<li><code>--webcam</code> 网络摄像头</li>
-<li><code>--video-input</code> 视频路径</li>
-<li><code>--input</code> 输入图片路径</li>
-<li><code>--output</code> 可视化结果输出位置，如果为赋值，则通过窗口显示</li>
-<li><code>--confidence-threshold</code> 显示实例预测的最小阈值</li>
-<li><code>--opts</code> 其他可选配置</li>
-</ul>
-<h4 id="setup-cfg-args-函数"><a href="#setup-cfg-args-函数" class="headerlink" title="setup_cfg(args)函数"></a><code>setup_cfg(args)</code>函数</h4><p>前面<code>get_parser()</code> 函数返回的是一个参数解析器，主函数调用<code>.parse_args()</code>进行参数解析后得到<code>args</code>是一个<code>namespace</code>，指定了对应的配置文件，还需要将配置文件的参数进行解析。</p>
-<p>首先构建了一个默认的<code>CfgNode</code>对象，主要用来存放基本的网络参数配置，通过调用<code>.merge_from_file()</code> 和 <code>.merge_from_list()</code>两个方法解析<code>args</code>的指定的配置文件，对默认数值进行更新。</p>
-<hr>
-<h3 id="Predictor-py文件概览"><a href="#Predictor-py文件概览" class="headerlink" title="Predictor.py文件概览"></a><code>Predictor.py</code>文件概览</h3><p>从上面的总体流程中可以看出，<code>demo.py</code>的核心功能是通过<font color =#0087BB><code>VisualizationDemo</code></font> 类实现的，这个类在同目录下的<code>predictor.py</code> 文件中。这个文件内部主要包含两个类：</p>
-<ul>
-<li><p><code>VisualizationDemo</code></p>
-</li>
-<li><p><code>AsyncPredictor</code>  </p>
-</li>
-</ul>
-<h4 id="VisualizationDemo-类"><a href="#VisualizationDemo-类" class="headerlink" title="VisualizationDemo 类"></a><code>VisualizationDemo</code> 类</h4><p>内部定义了以下四个函数：</p>
-<ul>
-<li><code>__init__()</code></li>
-<li><code>run_on_image()</code></li>
-<li><code>run_on_video()</code></li>
-<li><p><code>_frame_from_video()</code></p>
-<h5 id="init"><a href="#init" class="headerlink" title="__init__()"></a><code>__init__()</code></h5><p>  定义了预测参数，并根据并行处理需求将<code>predictor</code>设置为默认预测器<code>DefaultPredictor</code>或者并行预测器<code>AsyncPredictor</code>。</p>
-<h5 id="run-on-image-self-image"><a href="#run-on-image-self-image" class="headerlink" title="run_on_image(self, image)"></a><code>run_on_image(self, image)</code></h5><ul>
-<li>输入：图像（H, W, C）图像模式 (BGR)</li>
-<li><p>输出：网络输出结果<code>predictions</code>, 可视化结果<code>vis_output</code>，可视化结果是<code>Visualizer</code>对象。</p>
-<h5 id="frame-from-video-self-video"><a href="#frame-from-video-self-video" class="headerlink" title="_frame_from_video(self, video)"></a><code>_frame_from_video(self, video)</code></h5><p>获取视频帧</p>
-<h5 id="run-on-video-self-video"><a href="#run-on-video-self-video" class="headerlink" title="run_on_video(self, video)"></a><code>run_on_video(self, video)</code></h5><p>调用<code>_frame_from_video</code> 方法获取视频帧，对每一帧进行预测，并通过内置的<code>process_predictions</code>方法，创建<code>Visualizer</code>对象，对结果进行展示。</p>
-<h4 id="AsyncPredictor类"><a href="#AsyncPredictor类" class="headerlink" title="AsyncPredictor类"></a><code>AsyncPredictor</code>类</h4><p>主要是针对多GPU预测进行了处理，每个GPU上构建一个默认预测器<code>DefaultPredictor</code>，分别进行预测。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="DefaultPredictor-类"><a href="#DefaultPredictor-类" class="headerlink" title="DefaultPredictor 类"></a><code>DefaultPredictor</code> 类</h3><p>不论是单GPU，还是多GPU，最后的预测器都调用了<code>DefaultPredictor</code> 类，该类位于<code>detectron2\engine\defaults.py</code>中，内部只有初始化函数<code>__init__</code>和回调函数<code>__call__</code>，核心功能是通过给定参数构建端到端的网络，对输入图像进行<code>Transfrom</code>后，并送入网络模型，预测结果。</p>
-<p>demo的功能浏览完了，接下去的内容会从<code>Dataloader</code>开始，构建模型，评估测试，最终结果可视化。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/10/20200911-detectron2-02-demo/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -608,7 +532,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-11 17:43:22" itemprop="dateModified" datetime="2020-09-11T17:43:22+08:00">2020-09-11</time>
+                <time title="修改时间：2020-10-12 22:10:15" itemprop="dateModified" datetime="2020-10-12T22:10:15+08:00">2020-10-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -647,47 +571,14 @@
       
           <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p><a target="_blank" rel="noopener" href="https://github.com/facebookresearch/detectron2">Detectron2</a> 是Facebook AI Research (FAIR)开源的目标检测框架，在上一代的基础上，基于Pytorch进行了实现。模型涵盖目标检测的Faster R-CNN, RetinaNet, 实例分割的Mask R-CNN, 关键点估计的Dense Pose, 全景分割的Panoptic FPN等多个模型，以及相应数据的加载等。</p>
 <p>最近在自己的项目实现过程，深刻意识到设计一个系统与解决一道代码题目是两个不同的概念。正好项目中需要用到Detectron2的部分代码，因此将Detectron2作为自己学习代码规范和项目实现的样例。</p>
-<h3 id="主机环境"><a href="#主机环境" class="headerlink" title="主机环境"></a>主机环境</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名称</th>
-<th style="text-align:center">版本</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">操作系统</td>
-<td style="text-align:center">Linux 16.04</td>
-</tr>
-<tr>
-<td style="text-align:center">显卡</td>
-<td style="text-align:center">GTX Titan X</td>
-</tr>
-<tr>
-<td style="text-align:center">驱动</td>
-<td style="text-align:center">418.56</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA</td>
-<td style="text-align:center">9.0</td>
-</tr>
-<tr>
-<td style="text-align:center">Conda</td>
-<td style="text-align:center">4.84</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>逐行运行下列命令即可，按照<a target="_blank" rel="noopener" href="https://detectron2.readthedocs.io/tutorials/install.html">官方文档</a>运行的时候，发现少了<code>opencv-python</code>库，因此补了一条。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda create -n detectron2 python&#x3D;3.6</span><br><span class="line">conda activate detectron2</span><br><span class="line">conda install pytorch torchvision cudatoolkit&#x3D;9.2 -c pytorch</span><br><span class="line">pip install opencv-python</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;facebookresearch&#x2F;detectron2.git</span><br><span class="line">python -m pip install -e detectron2</span><br></pre></td></tr></table></figure>
-<h3 id="Demo测试"><a href="#Demo测试" class="headerlink" title="Demo测试"></a>Demo测试</h3><h4 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h4><p>提前找一张图片放进<code>demo</code>文件夹中，这里从<a target="_blank" rel="noopener" href="http://www.gudaimi.com/Sjfyltu/201812/99590.html">网络</a>随机照了一张图片，保存的文件名为 <code>test_pic.jpg</code>，结果并保存为同目录下的<code>res_pic.jpg</code> (<code>--output</code> 后的参数)；如果要测试视频，输出参数要将<code>--input</code> 改为<code>--video-input</code>。其余参数可以使用<code>python demo.py -h</code> 进行查看。</p>
-<h4 id="代码运行"><a href="#代码运行" class="headerlink" title="代码运行"></a>代码运行</h4><p>进入<code>demo</code>文件夹测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd dtectron2&#x2F;demo</span><br><span class="line">python demo.py --config-file ..&#x2F;configs&#x2F;COCO- InstanceSegmentation&#x2F;mask_rcnn_R_50_FPN_3x.yaml \</span><br><span class="line">--input test_pic.jpg --output res_pic.jpg --opts MODEL.WEIGHTS \</span><br><span class="line">detectron2:&#x2F;&#x2F;COCO-InstanceSegmentation&#x2F;mask_rcnn_R_50_FPN_3x&#x2F;137849600&#x2F;model_final_f10217.pkl</span><br></pre></td></tr></table></figure>
-<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/detectron2/test_pic.jpeg" alt="输入图像"></p>
-<h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/detectron2/res_pic.jpg" alt="测试结果"></p>
-<p>到这里就完成了Detectron2的全部安装过程了，明天开始阅读demo.py文件。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/10/20200910-detectron2-01-installation/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -737,7 +628,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 13:54:23" itemprop="dateModified" datetime="2020-08-18T13:54:23+08:00">2020-08-18</time>
+                <time title="修改时间：2020-10-12 22:10:25" itemprop="dateModified" datetime="2020-10-12T22:10:25+08:00">2020-10-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -764,13 +655,14 @@
       
           <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>十七年的蛰伏，只为一个盛夏，只为这个盛夏。</p>
 <p>无人的深夜，从地下钻出。这并不是第一次看见这个世界，上一次不过是十七年前，出生后的匆匆一瞥。现在，依旧无暇关注，因为还有更重要的事情等着我。爬上树梢，准备开启生命中的最后一个阶段。在原来的身体里挣扎着，感受着躯壳撕裂开来，一点一点的剥离开来。相同的事情，已经经历了四次，现如今看着褪下的身躯，感叹着这是最后一次了，终于到最后一次了，梦想化作双翼。至此，总算拥有了生命，与灵魂契合的生命。</p>
-<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>自己的身份证快要过期了，下一张的有效期便是二十年。大哥自成年之后，即将走上奔三的生涯。终于是到了这个失去的年纪，不论是自己的亲人，抑或是崇拜的偶像，从霍金到张守晟，从金庸到斯坦·李，那些为人类科学事业不断奉献的人，那些伴随着自己成长的角色，终究都成了过往。</p>
-<p>自从大学毕业之后，时间过得飞快。不记得哪一天开始，不怎么找歌听了，觉得现在列表里的就不错。也追不上新番了，仿佛中二病，黑子的篮球还是去年的番，夏目友人帐第五季，也不过是刚出的消息。最近买来的游戏，静静的躺在那里，看完了游戏启动画面，就再也没有然后。或许只是出于情怀喜+1吧，半开玩笑的说着“自己花钱买的游戏，凭什么还要花时间玩”，心里却多少有些落寞。遇到事情，不论好坏，也不愿去多谈什么，只是默默放在心底。</p>
-<p>回首过去，才发觉忙忙碌碌，却什么都没有做。学了很多，却又什么都没有记住。人生实苦，于我而言，生命本身是没有意义的，更多的是寻找意义的过程，以及这一生中，不论悲喜，给自己留下的感觉。</p>
-<p>未来，我如果有一个孩子，我不指望他能达成多大的成就，不求大富大贵，不求功名显赫。但是我想在灿烂星河下讲着牛郎织女的故事，说着奥林匹斯山上众神的纷争，告诉他阿基米德撬动地球的支点，以及梵高笔下的星夜。希望他能够领略浩瀚宇宙中的美景，更希望他能够被那一段段深情的文字所打动，为科学的公式所折服，为艺术的升华所感染。在万家灯火中，体验人间冷暖，学会感恩，懂得体谅。终于，他觉得无愧此生，平静坦然地按自己的计划过完余生。</p>
-<p>可是孩子终究是独立的个体，本不应该按照我设定的路线走下去。这个世界，有太多的不如意，带他来到这个世界，或许就已经亏欠他太多了。直到朋友说起，这可能也是你想成为的人吧。那一刻，才意识到，原来这是自己想要成为的样子啊。自己终究不能免俗，将自己未完成的事情，寄希望于自己的孩子，更可笑的是自己还不自知。又或许是自己早早的框定了自己的余生，已经没有去戍守边疆，保家卫国，若是用尽全力，去做一些事情，做成一些事情，就很好了。</p>
-<p>关于余生，我总需要一个出口。筹划了很久的博客，总算在今年提上了日程，记下人间的美好，存下自己的呢喃，也为自己的盛夏蛰伏。故此，蝉鸣。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/30/gossip_001/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
