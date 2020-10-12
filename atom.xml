@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yvesxu.com/"/>
-  <updated>2020-10-12T08:52:56.033Z</updated>
+  <updated>2020-10-12T08:57:33.713Z</updated>
   <id>http://www.yvesxu.com/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python学习笔记01 `is` 和 &quot;==&quot; 的区别</title>
+    <title>Python学习笔记01 &quot;is&quot; 和 &quot;==&quot; 的区别</title>
     <link href="http://www.yvesxu.com/2020/10/12/20201012-python-01/"/>
     <id>http://www.yvesxu.com/2020/10/12/20201012-python-01/</id>
     <published>2020-10-12T05:23:15.000Z</published>
-    <updated>2020-10-12T08:52:56.033Z</updated>
+    <updated>2020-10-12T08:57:33.713Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="is-和-“-”-的概念"><a href="#is-和-“-”-的概念" class="headerlink" title="is 和 “==” 的概念"></a><code>is</code> 和 “==” 的概念</h4><p><code>==</code>比较的是两个对象的“值“是否相等<br><code>is</code>比较的是两个对象在内存中的地址是否相同（值相等，内存一致，可以理解为<code>id(a) == id(b)</code>）<br>代码示例</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">19260817</span></span><br><span class="line">b = <span class="number">19260817</span></span><br><span class="line">c = a </span><br><span class="line">print(a == b)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 地址不一致, 返回False</span></span><br><span class="line">print(a == c)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> c)</span><br><span class="line"><span class="comment"># 地址一致, 返回True</span></span><br></pre></td></tr></table></figure><h4 id="其他关于is的注意事项："><a href="#其他关于is的注意事项：" class="headerlink" title="其他关于is的注意事项："></a>其他关于<code>is</code>的注意事项：</h4><ul><li>为了提升性能, python将$[-5, 256]$区间内的整数放在了<code>small_ints</code>中,需要用到的时候直接从里面取值, 而不是创造新的对象, 因此区间内的对象只要数值相同, 他们的地址也相同。</li><li>类似的, 为了提高字符串利用效率, python使用了intern(字符串驻留)机制, 将<font color=#0087BB>长度不超过20, 且仅由下划线、数字、字母组成的字符串</font>以<code>&#123;string: id(string)&#125;</code>的字典形式存储, 相同字符串使用同一个地址。(在<code>Pycharm</code>和<code>VS code</code>等IDE中, 只要字符串<font color=#0087BB>长度不超过20</font>, 就会采用上述形式存储。)</li><li>和<code>None</code>比较时使用<code>is</code>, <code>None</code>也是有专门的地址, 因此只要变量是<code>None</code>, 均是同一个地址。<br>代码示例:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">52</span></span><br><span class="line">b = <span class="number">52</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 数值在$[-5, 256]$ 区间内, 返回True</span></span><br><span class="line">a = <span class="number">520</span></span><br><span class="line">b = <span class="number">520</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 数值不在$[-5, 256]$ 区间内, 返回False</span></span><br><span class="line">a = <span class="string">&quot;ab&quot;</span></span><br><span class="line">b = <span class="string">&quot;ab&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 满足`intern`机制要求, 返回True</span></span><br><span class="line">a = <span class="string">&quot;a b&quot;</span></span><br><span class="line">b = <span class="string">&quot;a b&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 不一定满足`intern`机制要求, 在python终端中返回False, Pycharm中返回True</span></span><br><span class="line">a = <span class="string">&quot;&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># a是字符串对象, 有自己的地址, 返回False</span></span><br><span class="line">b = <span class="literal">None</span></span><br><span class="line">print(b <span class="keyword">is</span> <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 返回True</span></span><br></pre></td></tr></table></figure></li></ul><p>参考资料：<br><a href="https://blog.csdn.net/qq_26442553/article/details/82195061">https://blog.csdn.net/qq_26442553/article/details/82195061</a><br><a href="https://www.cnblogs.com/greatfish/p/6045088.html">https://www.cnblogs.com/greatfish/p/6045088.html</a></p>]]></content>
+    <content type="html"><![CDATA[<h4 id="is-和-“-”-的概念"><a href="#is-和-“-”-的概念" class="headerlink" title="is 和 “==” 的概念"></a><code>is</code> 和 “==” 的概念</h4><p><code>==</code>比较的是两个对象的“值“是否相等<br><code>is</code>比较的是两个对象在内存中的地址是否相同（值相等，内存一致，可以理解为<code>id(a) == id(b)</code>）<br>代码示例</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">19260817</span></span><br><span class="line">b = <span class="number">19260817</span></span><br><span class="line">c = a </span><br><span class="line">print(a == b)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 地址不一致, 返回False</span></span><br><span class="line">print(a == c)</span><br><span class="line"><span class="comment"># 数值一致, 返回True</span></span><br><span class="line">print(a <span class="keyword">is</span> c)</span><br><span class="line"><span class="comment"># 地址一致, 返回True</span></span><br></pre></td></tr></table></figure><h4 id="其他关于is的注意事项："><a href="#其他关于is的注意事项：" class="headerlink" title="其他关于is的注意事项："></a>其他关于<code>is</code>的注意事项：</h4><ul><li>为了提升性能, python将<font color=#0087BB>$[-5, 256]$</font>区间内的整数放在了<code>small_ints</code>中,需要用到的时候直接从里面取值, 而不是创造新的对象, 因此区间内的对象只要数值相同, 他们的地址也相同。</li><li>类似的, 为了提高字符串利用效率, python使用了intern(字符串驻留)机制, 将<font color=#0087BB>长度不超过20, 且仅由下划线、数字、字母组成的字符串</font>以<code>&#123;string: id(string)&#125;</code>的字典形式存储, 相同字符串使用同一个地址。(在<code>Pycharm</code>和<code>VS code</code>等IDE中, 只要字符串<font color=#0087BB>长度不超过20</font>, 就会采用上述形式存储。)</li><li>和<code>None</code>比较时使用<code>is</code>, <code>None</code>也是有专门的地址, 因此只要变量是<code>None</code>, 均是同一个地址。<br>代码示例:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">52</span></span><br><span class="line">b = <span class="number">52</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 数值在[-5, 256]区间内, 返回True</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">520</span></span><br><span class="line">b = <span class="number">520</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 数值不在[-5, 256]区间内, 返回False</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;ab&quot;</span></span><br><span class="line">b = <span class="string">&quot;ab&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 满足`intern`机制要求, 返回True</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;a b&quot;</span></span><br><span class="line">b = <span class="string">&quot;a b&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br><span class="line"><span class="comment"># 不一定满足`intern`机制要求, 在python终端中返回False, Pycharm中返回True</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;&quot;</span></span><br><span class="line">print(a <span class="keyword">is</span> <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># a是字符串对象, 有自己的地址, 返回False</span></span><br><span class="line"></span><br><span class="line">b = <span class="literal">None</span></span><br><span class="line">print(b <span class="keyword">is</span> <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 返回True</span></span><br></pre></td></tr></table></figure></li></ul><p>参考资料：<br><a href="https://blog.csdn.net/qq_26442553/article/details/82195061">https://blog.csdn.net/qq_26442553/article/details/82195061</a><br><a href="https://www.cnblogs.com/greatfish/p/6045088.html">https://www.cnblogs.com/greatfish/p/6045088.html</a></p>]]></content>
     
     <summary type="html">
     
@@ -35,7 +35,7 @@
     </summary>
     
     
-      <category term="pytorch" scheme="http://www.yvesxu.com/categories/pytorch/"/>
+      <category term="techs" scheme="http://www.yvesxu.com/categories/techs/"/>
     
     
       <category term="python" scheme="http://www.yvesxu.com/tags/python/"/>
@@ -92,11 +92,11 @@
       <category term="detectron2" scheme="http://www.yvesxu.com/categories/detectron2/"/>
     
     
-      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
-    
       <category term="深度学习" scheme="http://www.yvesxu.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="pytorch" scheme="http://www.yvesxu.com/tags/pytorch/"/>
+    
+      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
     
   </entry>
   
@@ -122,11 +122,11 @@
       <category term="detectron2" scheme="http://www.yvesxu.com/categories/detectron2/"/>
     
     
-      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
-    
       <category term="深度学习" scheme="http://www.yvesxu.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="pytorch" scheme="http://www.yvesxu.com/tags/pytorch/"/>
+    
+      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
     
   </entry>
   
