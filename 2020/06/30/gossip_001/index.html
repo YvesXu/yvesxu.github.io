@@ -13,11 +13,13 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.yvesxu.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"www.yvesxu.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="引子十七年的蛰伏，只为一个盛夏，只为这个盛夏。 无人的深夜，从地下钻出。这并不是第一次看见这个世界，上一次不过是十七年前，出生后的匆匆一瞥。现在，依旧无暇关注，因为还有更重要的事情等着我。爬上树梢，准备开启生命中的最后一个阶段。在原来的身体里挣扎着，感受着躯壳撕裂开来，一点一点的剥离开来。相同的事情，已经经历了四次，现如今看着褪下的身躯，感叹着这是最后一次了，终于到最后一次了，梦想化作双翼。至此，">
@@ -33,10 +35,11 @@
 <meta property="article:tag" content="人间值得">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="http://www.yvesxu.com/2020/06/30/gossip_001/">
 
 
-<script id="page-configurations">
+<script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -65,50 +68,62 @@
 
   <noscript>
   <style>
-  .use-motion .brand,
+  body { margin-top: 2rem; }
+
   .use-motion .menu-item,
-  .sidebar-inner,
+  .use-motion .sidebar,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle {
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
   </style>
 </noscript>
 
 <link rel="alternate" href="/atom.xml" title="YvesXu" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">YvesXu</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">技术 · 生活 · 人间值得</p>
   </div>
@@ -122,9 +137,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
+  <ul class="main-menu menu">
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fas fa-home fa-fw"></i>首页</a>
@@ -132,32 +146,32 @@
   </li>
         <li class="menu-item menu-item-techs">
 
-    <a href="/categories/techs/" rel="section"><i class="fas fa-laptop-code fa-fw"></i>技术分享</a>
+    <a href="/categories/techs/" rel="section"><i class="fas fa-laptop-code fa-fw"></i>techs</a>
 
   </li>
         <li class="menu-item menu-item-algorithms">
 
-    <a href="/categories/algorithms/" rel="section"><i class="fas fa-code fa-fw"></i>算法</a>
+    <a href="/categories/algorithms/" rel="section"><i class="fas fa-code fa-fw"></i>algorithms</a>
 
   </li>
         <li class="menu-item menu-item-paper">
 
-    <a href="/categories/papers/" rel="section"><i class="fas fa-sticky-note fa-fw"></i>论文阅读</a>
+    <a href="/categories/papers/" rel="section"><i class="fas fa-sticky-note fa-fw"></i>paper</a>
 
   </li>
         <li class="menu-item menu-item-pytorch">
 
-    <a href="/categories/pytorch/" rel="section"><i class="fas fa-fire-alt fa-fw"></i>pytorch学习</a>
+    <a href="/categories/pytorch/" rel="section"><i class="fas fa-fire-alt fa-fw"></i>pytorch</a>
 
   </li>
         <li class="menu-item menu-item-detectron2">
 
-    <a href="/categories/detectron2/" rel="section"><i class="fas fa-object-ungroup fa-fw"></i>Detectron2源码解析</a>
+    <a href="/categories/detectron2/" rel="section"><i class="fas fa-object-ungroup fa-fw"></i>detectron2</a>
 
   </li>
         <li class="menu-item menu-item-gossip">
 
-    <a href="/categories/gossip/" rel="section"><i class="fas fa-comment-dots fa-fw"></i>蝉鸣低语</a>
+    <a href="/categories/gossip/" rel="section"><i class="fas fa-comment-dots fa-fw"></i>gossip</a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -186,7 +200,7 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
@@ -194,9 +208,9 @@
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -204,215 +218,18 @@
   </div>
 
 </div>
-    </header>
-
-    
-
-  <a href="https://github.com/yvesxu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/06/30/gossip_001/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/asset/avatar.jpg">
-      <meta itemprop="name" content="YvesXu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YvesXu">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          蝉鸣低语
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-30 18:15:24" itemprop="dateCreated datePublished" datetime="2020-06-30T18:15:24+08:00">2020-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-12 22:10:25" itemprop="dateModified" datetime="2020-10-12T22:10:25+08:00">2020-10-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gossip/" itemprop="url" rel="index"><span itemprop="name">gossip</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>十七年的蛰伏，只为一个盛夏，只为这个盛夏。</p>
-<p>无人的深夜，从地下钻出。这并不是第一次看见这个世界，上一次不过是十七年前，出生后的匆匆一瞥。现在，依旧无暇关注，因为还有更重要的事情等着我。爬上树梢，准备开启生命中的最后一个阶段。在原来的身体里挣扎着，感受着躯壳撕裂开来，一点一点的剥离开来。相同的事情，已经经历了四次，现如今看着褪下的身躯，感叹着这是最后一次了，终于到最后一次了，梦想化作双翼。至此，总算拥有了生命，与灵魂契合的生命。</p>
-<a id="more"></a>
-<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>自己的身份证快要过期了，下一张的有效期便是二十年。大哥自成年之后，即将走上奔三的生涯。终于是到了这个失去的年纪，不论是自己的亲人，抑或是崇拜的偶像，从霍金到张守晟，从金庸到斯坦·李，那些为人类科学事业不断奉献的人，那些伴随着自己成长的角色，终究都成了过往。</p>
-<p>自从大学毕业之后，时间过得飞快。不记得哪一天开始，不怎么找歌听了，觉得现在列表里的就不错。也追不上新番了，仿佛中二病，黑子的篮球还是去年的番，夏目友人帐第五季，也不过是刚出的消息。最近买来的游戏，静静的躺在那里，看完了游戏启动画面，就再也没有然后。或许只是出于情怀喜+1吧，半开玩笑的说着“自己花钱买的游戏，凭什么还要花时间玩”，心里却多少有些落寞。遇到事情，不论好坏，也不愿去多谈什么，只是默默放在心底。</p>
-<p>回首过去，才发觉忙忙碌碌，却什么都没有做。学了很多，却又什么都没有记住。人生实苦，于我而言，生命本身是没有意义的，更多的是寻找意义的过程，以及这一生中，不论悲喜，给自己留下的感觉。</p>
-<p>未来，我如果有一个孩子，我不指望他能达成多大的成就，不求大富大贵，不求功名显赫。但是我想在灿烂星河下讲着牛郎织女的故事，说着奥林匹斯山上众神的纷争，告诉他阿基米德撬动地球的支点，以及梵高笔下的星夜。希望他能够领略浩瀚宇宙中的美景，更希望他能够被那一段段深情的文字所打动，为科学的公式所折服，为艺术的升华所感染。在万家灯火中，体验人间冷暖，学会感恩，懂得体谅。终于，他觉得无愧此生，平静坦然地按自己的计划过完余生。</p>
-<p>可是孩子终究是独立的个体，本不应该按照我设定的路线走下去。这个世界，有太多的不如意，带他来到这个世界，或许就已经亏欠他太多了。直到朋友说起，这可能也是你想成为的人吧。那一刻，才意识到，原来这是自己想要成为的样子啊。自己终究不能免俗，将自己未完成的事情，寄希望于自己的孩子，更可笑的是自己还不自知。又或许是自己早早的框定了自己的余生，已经没有去戍守边疆，保家卫国，若是用尽全力，去做一些事情，做成一些事情，就很好了。</p>
-<p>关于余生，我总需要一个出口。筹划了很久的博客，总算在今年提上了日程，记下人间的美好，存下自己的呢喃，也为自己的盛夏蛰伏。故此，蝉鸣。</p>
-
-    </div>
-
-    
-    
-    
-        <div class="reward-container">
-  <div></div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/asset/wechatpay.png" alt="YvesXu 微信支付">
-        <p>微信支付</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/asset/alipay.png" alt="YvesXu 支付宝">
-        <p>支付宝</p>
-      </div>
-
-  </div>
-</div>
-
         
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>YvesXu
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://www.yvesxu.com/2020/06/30/gossip_001/" title="蝉鸣低语">http://www.yvesxu.com/2020/06/30/gossip_001/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-        
-
-  <div class="followme">
-    <p>欢迎关注我的其它发布渠道</p>
-
-    <div class="social-list">
-
-        <div class="social-item">
-          <a target="_blank" class="social-link" href="/asset/wechat_channel.png">
-            <span class="icon">
-              <i class="fab fa-weixin"></i>
-            </span>
-
-            <span class="label">WeChat</span>
-          </a>
-        </div>
-    </div>
-  </div>
-
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E4%BA%BA%E9%97%B4%E5%80%BC%E5%BE%97/" rel="tag"># 人间值得</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item"></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/10/20200910-detectron2-01-installation/" rel="next" title="detectron2 源码阅读系列 01 安装流程">
-      detectron2 源码阅读系列 01 安装流程 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
   <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -422,19 +239,19 @@
       </ul>
 
       <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%98%E8%B5%B7"><span class="nav-number">2.</span> <span class="nav-text">缘起</span></a></li></ol></div>
-      </div>
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%98%E8%B5%B7"><span class="nav-number">2.</span> <span class="nav-text">缘起</span></a></li></ol></div>
+      </section>
       <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="YvesXu"
       src="/asset/avatar.jpg">
   <p class="site-author-name" itemprop="name">YvesXu</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
@@ -455,37 +272,212 @@
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
         <a href="https://github.com/yvesxu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yvesxu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
 
 
 
-      </div>
-        <div class="back-to-top motion-element">
+      </section>
+        <div class="back-to-top animated">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
 
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/06/30/gossip_001/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/asset/avatar.jpg">
+      <meta itemprop="name" content="YvesXu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YvesXu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          蝉鸣低语
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-30 18:15:24" itemprop="dateCreated datePublished" datetime="2020-06-30T18:15:24+08:00">2020-06-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-12 22:10:25" itemprop="dateModified" datetime="2020-10-12T22:10:25+08:00">2020-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/gossip/" itemprop="url" rel="index"><span itemprop="name">gossip</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>十七年的蛰伏，只为一个盛夏，只为这个盛夏。</p>
+<p>无人的深夜，从地下钻出。这并不是第一次看见这个世界，上一次不过是十七年前，出生后的匆匆一瞥。现在，依旧无暇关注，因为还有更重要的事情等着我。爬上树梢，准备开启生命中的最后一个阶段。在原来的身体里挣扎着，感受着躯壳撕裂开来，一点一点的剥离开来。相同的事情，已经经历了四次，现如今看着褪下的身躯，感叹着这是最后一次了，终于到最后一次了，梦想化作双翼。至此，总算拥有了生命，与灵魂契合的生命。</p>
+<a id="more"></a>
+<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>自己的身份证快要过期了，下一张的有效期便是二十年。大哥自成年之后，即将走上奔三的生涯。终于是到了这个失去的年纪，不论是自己的亲人，抑或是崇拜的偶像，从霍金到张守晟，从金庸到斯坦·李，那些为人类科学事业不断奉献的人，那些伴随着自己成长的角色，终究都成了过往。</p>
+<p>自从大学毕业之后，时间过得飞快。不记得哪一天开始，不怎么找歌听了，觉得现在列表里的就不错。也追不上新番了，仿佛中二病，黑子的篮球还是去年的番，夏目友人帐第五季，也不过是刚出的消息。最近买来的游戏，静静的躺在那里，看完了游戏启动画面，就再也没有然后。或许只是出于情怀喜+1吧，半开玩笑的说着“自己花钱买的游戏，凭什么还要花时间玩”，心里却多少有些落寞。遇到事情，不论好坏，也不愿去多谈什么，只是默默放在心底。</p>
+<p>回首过去，才发觉忙忙碌碌，却什么都没有做。学了很多，却又什么都没有记住。人生实苦，于我而言，生命本身是没有意义的，更多的是寻找意义的过程，以及这一生中，不论悲喜，给自己留下的感觉。</p>
+<p>未来，我如果有一个孩子，我不指望他能达成多大的成就，不求大富大贵，不求功名显赫。但是我想在灿烂星河下讲着牛郎织女的故事，说着奥林匹斯山上众神的纷争，告诉他阿基米德撬动地球的支点，以及梵高笔下的星夜。希望他能够领略浩瀚宇宙中的美景，更希望他能够被那一段段深情的文字所打动，为科学的公式所折服，为艺术的升华所感染。在万家灯火中，体验人间冷暖，学会感恩，懂得体谅。终于，他觉得无愧此生，平静坦然地按自己的计划过完余生。</p>
+<p>可是孩子终究是独立的个体，本不应该按照我设定的路线走下去。这个世界，有太多的不如意，带他来到这个世界，或许就已经亏欠他太多了。直到朋友说起，这可能也是你想成为的人吧。那一刻，才意识到，原来这是自己想要成为的样子啊。自己终究不能免俗，将自己未完成的事情，寄希望于自己的孩子，更可笑的是自己还不自知。又或许是自己早早的框定了自己的余生，已经没有去戍守边疆，保家卫国，若是用尽全力，去做一些事情，做成一些事情，就很好了。</p>
+<p>关于余生，我总需要一个出口。筹划了很久的博客，总算在今年提上了日程，记下人间的美好，存下自己的呢喃，也为自己的盛夏蛰伏。故此，蝉鸣。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/asset/wechatpay.png" alt="YvesXu 微信">
+        <span>微信</span>
       </div>
-    </main>
+      <div>
+        <img src="/asset/alipay.png" alt="YvesXu 支付宝">
+        <span>支付宝</span>
+      </div>
 
-    <footer class="footer">
-      <div class="footer-inner">
+  </div>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/asset/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%BA%E9%97%B4%E5%80%BC%E5%BE%97/" rel="tag"># 人间值得</a>
+          </div>
+
         
 
-        
-  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">沪ICP备 20019281号 </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/09/10/20200910-detectron2-01-installation/" rel="next" title="detectron2 源码阅读系列 01 安装流程">
+                  detectron2 源码阅读系列 01 安装流程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">沪ICP备 20019281号 </a>
   </div>
 
 <div class="copyright">
@@ -497,47 +489,24 @@
   </span>
   <span class="author" itemprop="copyrightHolder">YvesXu</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 
 
 
 
-  
-<script src="/js/local-search.js"></script>
+  <script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -553,35 +522,27 @@
 
   
 
-  
+
+
+
+
+
+
 
   
 
+  
+
+  
 
 <script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : true,
-      notify     : false,
-      appId      : 'JQn2vyh8yvpLllIisY0QSEtI-gzGzoHsz',
-      appKey     : '8Evf2j6TqDnpLJtrA7PJCvJc',
-      placeholder: "欢迎交流讨论...",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '20' || 10,
-      visitor    : false,
-      lang       : 'zh-CN' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({"enable":true,"appId":"JQn2vyh8yvpLllIisY0QSEtI-gzGzoHsz","appKey":"8Evf2j6TqDnpLJtrA7PJCvJc","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
+      el: '#valine-comments',
+      path: "/2020/06/30/gossip_001/",
+      serverURLs: "https://jqn2vyh8.api.lncldglobal.com"
+    }));
   }, window.Valine);
 });
 </script>
