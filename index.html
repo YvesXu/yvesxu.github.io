@@ -250,7 +250,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -306,6 +306,102 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/11/30/20201130-detectron2-03-builtin-datasets/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/asset/avatar.jpg">
+      <meta itemprop="name" content="YvesXu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YvesXu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/30/20201130-detectron2-03-builtin-datasets/" class="post-title-link" itemprop="url">detectron2 源码阅读系列 03 内置数据集</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-11-30 13:52:26 / 修改时间：14:50:03" itemprop="dateCreated datePublished" datetime="2020-11-30T13:52:26+08:00">2020-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/codes/" itemprop="url" rel="index"><span itemprop="name">codes</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/30/20201130-detectron2-03-builtin-datasets/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/30/20201130-detectron2-03-builtin-datasets/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-内置数据集下载"><a href="#1-内置数据集下载" class="headerlink" title="1  内置数据集下载"></a>1  内置数据集下载</h3><p>detecrton2内置了一部分数据集的配置，包括：COCO的instance/ keypoint detectron，LVIS实例分割，citytscapes, Pascal VOC, ADE20k，以及Panoptic FPN 全景分割格式。</p>
+<p>这里以COCO2017和citytscapes的全景分割格式作为例子。<br>COCO下载地址：<a target="_blank" rel="noopener" href="https://cocodataset.org/#download">https://cocodataset.org/#download</a><br>cityscapes(需要登录)：<a target="_blank" rel="noopener" href="https://www.cityscapes-dataset.com/downloads/">https://www.cityscapes-dataset.com/downloads/</a></p>
+<p>如果下载速度慢的话，可以选择graviti（需要登陆）。<br>COCO：<a target="_blank" rel="noopener" href="https://www.graviti.cn/open-datasets/dataset-detail/COCO">https://www.graviti.cn/open-datasets/dataset-detail/COCO</a><br>cityscapes：<a target="_blank" rel="noopener" href="https://www.graviti.cn/open-datasets/dataset-detail/CityScapes">https://www.graviti.cn/open-datasets/dataset-detail/CityScapes</a></p>
+<h3 id="2-文件结构"><a href="#2-文件结构" class="headerlink" title="2 文件结构"></a>2 文件结构</h3><p>解压后，整个的文件结构如下，需要通过其他命令来生成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">detectron2/</span><br><span class="line">|---datasets/</span><br><span class="line">    |---cityscapes/</span><br><span class="line">        |---leftImg8bit/</span><br><span class="line">            |---train/</span><br><span class="line">            |---val/</span><br><span class="line">            |---<span class="built_in">test</span>/</span><br><span class="line">        |---gtFine/</span><br><span class="line">            |---cityscapes_panoptic_train.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_train/(生成)</span><br><span class="line">            |---cityscapes_panoptic_val.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_val/(生成)</span><br><span class="line">            |---cityscapes_panoptic_test.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_test/(生成)</span><br><span class="line">            |---train/</span><br><span class="line">                |---aachen/</span><br><span class="line">                    |---*color.png</span><br><span class="line">                    |---*instanceIds.png</span><br><span class="line">                    |---*labelIds.png</span><br><span class="line">                    |---*labelTrainIds.png</span><br><span class="line">                    |---*polygons.json</span><br><span class="line">                    ...</span><br><span class="line">                ...</span><br><span class="line">            |---val/</span><br><span class="line">            |---<span class="built_in">test</span>/</span><br><span class="line">        |---cityscapesScripts-master/</span><br><span class="line">    |---coco/</span><br><span class="line">        |---annotations/</span><br><span class="line">            |---instances_train2017.json</span><br><span class="line">            |---instances_val2017.json</span><br><span class="line">            |---person_keypoints_train2017.json</span><br><span class="line">            |---person_keypoints_val2017.json</span><br><span class="line">            |---captions_train2017.json</span><br><span class="line">            |---captions_val2017.json</span><br><span class="line">            |---panoptic_train2017.json</span><br><span class="line">            |---panoptic_val2017.json</span><br><span class="line">        |---panoptic_stuff_train2017/(生成)</span><br><span class="line">        |---panoptic_stuff_val2017/(生成)</span><br><span class="line">        |---panoptic_train2017/</span><br><span class="line">        |---panoptic_val2017/</span><br><span class="line">        |---train2017/</span><br><span class="line">        |---val2017/</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-数据生成"><a href="#3-数据生成" class="headerlink" title="3 数据生成"></a>3 数据生成</h3><h4 id="3-1-COCO-的PanopticFPN"><a href="#3-1-COCO-的PanopticFPN" class="headerlink" title="3.1 COCO 的PanopticFPN"></a>3.1 COCO 的PanopticFPN</h4><p>在<code>datasets/</code>文件下，运行以下命令，生成COCO 的全景分割数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/cocodataset/panopticapi.git</span><br><span class="line">python prepare_panoptic_fpn.py</span><br></pre></td></tr></table></figure>
+<p>在<code>datasets/cityscapes/cityscapesScripts-master</code>文件夹中，运行以下命令，生成CityScapes 的全景分割数据：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/mcordts/cityscapesScripts.git</span><br><span class="line">CITYSCAPES_DATASET=/path/to/abovementioned/cityscapes python cityscapesscripts/preparation/createTrainIdLabelImgs.py</span><br><span class="line">CITYSCAPES_DATASET=/path/to/abovementioned/cityscapes python cityscapesscripts/preparation/createPanopticImgs.py</span><br></pre></td></tr></table></figure></p>
+<p>最后整体的目录就和上面一样。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/11/11/20201111-papers-001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -320,7 +416,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/11/20201111-papers-001/" class="post-title-link" itemprop="url">【全景论文阅读001 Panoptic FPN】 Panoptic Feature Pyramid Networks</a>
+            <a href="/2020/11/11/20201111-papers-001/" class="post-title-link" itemprop="url">【全景分割论文阅读001 Panoptic FPN】 Panoptic Feature Pyramid Networks</a>
         </h2>
 
         <div class="post-meta-container">
@@ -338,7 +434,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-24 00:06:09" itemprop="dateModified" datetime="2020-11-24T00:06:09+08:00">2020-11-24</time>
+        <time title="修改时间：2020-11-24 22:17:00" itemprop="dateModified" datetime="2020-11-24T22:17:00+08:00">2020-11-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

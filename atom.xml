@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yvesxu.com/"/>
-  <updated>2020-11-23T16:06:09.831Z</updated>
+  <updated>2020-11-30T06:50:03.644Z</updated>
   <id>http://www.yvesxu.com/</id>
   
   <author>
@@ -17,11 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【全景论文阅读001 Panoptic FPN】 Panoptic Feature Pyramid Networks</title>
+    <title>detectron2 源码阅读系列 03 内置数据集</title>
+    <link href="http://www.yvesxu.com/2020/11/30/20201130-detectron2-03-builtin-datasets/"/>
+    <id>http://www.yvesxu.com/2020/11/30/20201130-detectron2-03-builtin-datasets/</id>
+    <published>2020-11-30T05:52:26.000Z</published>
+    <updated>2020-11-30T06:50:03.644Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-内置数据集下载"><a href="#1-内置数据集下载" class="headerlink" title="1  内置数据集下载"></a>1  内置数据集下载</h3><p>detecrton2内置了一部分数据集的配置，包括：COCO的instance/ keypoint detectron，LVIS实例分割，citytscapes, Pascal VOC, ADE20k，以及Panoptic FPN 全景分割格式。</p><p>这里以COCO2017和citytscapes的全景分割格式作为例子。<br>COCO下载地址：<a href="https://cocodataset.org/#download">https://cocodataset.org/#download</a><br>cityscapes(需要登录)：<a href="https://www.cityscapes-dataset.com/downloads/">https://www.cityscapes-dataset.com/downloads/</a></p><p>如果下载速度慢的话，可以选择graviti（需要登陆）。<br>COCO：<a href="https://www.graviti.cn/open-datasets/dataset-detail/COCO">https://www.graviti.cn/open-datasets/dataset-detail/COCO</a><br>cityscapes：<a href="https://www.graviti.cn/open-datasets/dataset-detail/CityScapes">https://www.graviti.cn/open-datasets/dataset-detail/CityScapes</a></p><h3 id="2-文件结构"><a href="#2-文件结构" class="headerlink" title="2 文件结构"></a>2 文件结构</h3><p>解压后，整个的文件结构如下，需要通过其他命令来生成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">detectron2/</span><br><span class="line">|---datasets/</span><br><span class="line">    |---cityscapes/</span><br><span class="line">        |---leftImg8bit/</span><br><span class="line">            |---train/</span><br><span class="line">            |---val/</span><br><span class="line">            |---<span class="built_in">test</span>/</span><br><span class="line">        |---gtFine/</span><br><span class="line">            |---cityscapes_panoptic_train.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_train/(生成)</span><br><span class="line">            |---cityscapes_panoptic_val.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_val/(生成)</span><br><span class="line">            |---cityscapes_panoptic_test.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_test/(生成)</span><br><span class="line">            |---train/</span><br><span class="line">                |---aachen/</span><br><span class="line">                    |---*color.png</span><br><span class="line">                    |---*instanceIds.png</span><br><span class="line">                    |---*labelIds.png</span><br><span class="line">                    |---*labelTrainIds.png</span><br><span class="line">                    |---*polygons.json</span><br><span class="line">                    ...</span><br><span class="line">                ...</span><br><span class="line">            |---val/</span><br><span class="line">            |---<span class="built_in">test</span>/</span><br><span class="line">        |---cityscapesScripts-master/</span><br><span class="line">    |---coco/</span><br><span class="line">        |---annotations/</span><br><span class="line">            |---instances_train2017.json</span><br><span class="line">            |---instances_val2017.json</span><br><span class="line">            |---person_keypoints_train2017.json</span><br><span class="line">            |---person_keypoints_val2017.json</span><br><span class="line">            |---captions_train2017.json</span><br><span class="line">            |---captions_val2017.json</span><br><span class="line">            |---panoptic_train2017.json</span><br><span class="line">            |---panoptic_val2017.json</span><br><span class="line">        |---panoptic_stuff_train2017/(生成)</span><br><span class="line">        |---panoptic_stuff_val2017/(生成)</span><br><span class="line">        |---panoptic_train2017/</span><br><span class="line">        |---panoptic_val2017/</span><br><span class="line">        |---train2017/</span><br><span class="line">        |---val2017/</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p><h3 id="3-数据生成"><a href="#3-数据生成" class="headerlink" title="3 数据生成"></a>3 数据生成</h3><h4 id="3-1-COCO-的PanopticFPN"><a href="#3-1-COCO-的PanopticFPN" class="headerlink" title="3.1 COCO 的PanopticFPN"></a>3.1 COCO 的PanopticFPN</h4><p>在<code>datasets/</code>文件下，运行以下命令，生成COCO 的全景分割数据：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/cocodataset/panopticapi.git</span><br><span class="line">python prepare_panoptic_fpn.py</span><br></pre></td></tr></table></figure><p>在<code>datasets/cityscapes/cityscapesScripts-master</code>文件夹中，运行以下命令，生成CityScapes 的全景分割数据：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/mcordts/cityscapesScripts.git</span><br><span class="line">CITYSCAPES_DATASET=/path/to/abovementioned/cityscapes python cityscapesscripts/preparation/createTrainIdLabelImgs.py</span><br><span class="line">CITYSCAPES_DATASET=/path/to/abovementioned/cityscapes python cityscapesscripts/preparation/createPanopticImgs.py</span><br></pre></td></tr></table></figure></p><p>最后整体的目录就和上面一样。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-内置数据集下载&quot;&gt;&lt;a href=&quot;#1-内置数据集下载&quot; class=&quot;headerlink&quot; title=&quot;1  内置数据集下载&quot;&gt;&lt;/a&gt;1  内置数据集下载&lt;/h3&gt;&lt;p&gt;detecrton2内置了一部分数据集的配置，包括：COCO的instance/
+      
+    
+    </summary>
+    
+    
+      <category term="codes" scheme="http://www.yvesxu.com/categories/codes/"/>
+    
+    
+      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="深度学习" scheme="http://www.yvesxu.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="pytorch" scheme="http://www.yvesxu.com/tags/pytorch/"/>
+    
+      <category term="目标检测" scheme="http://www.yvesxu.com/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+      <category term="框架学习" scheme="http://www.yvesxu.com/tags/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【全景分割论文阅读001 Panoptic FPN】 Panoptic Feature Pyramid Networks</title>
     <link href="http://www.yvesxu.com/2020/11/11/20201111-papers-001/"/>
     <id>http://www.yvesxu.com/2020/11/11/20201111-papers-001/</id>
     <published>2020-11-11T06:32:19.000Z</published>
-    <updated>2020-11-23T16:06:09.831Z</updated>
+    <updated>2020-11-24T14:17:00.030Z</updated>
     
     <content type="html"><![CDATA[<p>  本文通过在Mask R-CNN的基础上加入了语义分支，实现了单个网络的全景分割架构，PQ指标达到40.6，成为全景分割的baseline。</p><a id="more"></a><h4 id="0-基本情况"><a href="#0-基本情况" class="headerlink" title="0 基本情况"></a>0 基本情况</h4><p>论文标题： Panoptic Feature Pyramid Networks<br>收录情况：CVPR 2019<br>原文地址：<a href="https://arxiv.org/pdf/1901.02446.pdf">https://arxiv.org/pdf/1901.02446.pdf</a></p><h4 id="1-网络架构"><a href="#1-网络架构" class="headerlink" title="1 网络架构"></a>1 网络架构</h4><p>  整个网络由4个模块组成: ResNet + FPN + Instance Segmentation Branch + Semantic Segmentation Branch。 从下图中可以看出，网络采用了ResNet + FPN的结构，实例分割选择了Mask R-CNN的结构，语义分割则是在FPN的结构上进行多尺度信息融合后得到的结果。<br>  整个网络的精度基本上等同于两个单独训练的FPN网络，但是内存和计算量只有一半。即在同等计算下，一个联合的网络得到了两个独立网络的效果。</p><p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_1_architecture.png" alt="网络结构"></p><p>  Mask R-CNN部分不再赘述，论文中详细介绍了语义分支的模块设计，如下图。 对于FPN提取出来的特征[P2, P3, P4, P5]，统一放大至1/4尺度后，进行累加，最后再通过卷积得到语义分割结果。图中的<code>conv-&gt;2x</code>包含了[<code>3×3</code>卷积 + <code>group norm</code> + <code>ReLu</code> + <code>2× bilinear upsamleing</code>]，最后将这四层特征逐元素相加，并通过<code>1×1</code>卷积和<code>4× bilinear upsamleing</code> + <code>softmax</code>，得到了最后语义分割的结果。<br>  注意，这里的语义分割只分割了背景，前景统一标注成<code>other</code>类。</p><p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_2_seghead.png" alt="语义分支"><br>  文章中还下图中不同的语义分支结构的计算量和效率，并进行了对比。<br><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_4_seghead2.png" alt="语义分支不同结构"></p><h4 id="2-推理过程"><a href="#2-推理过程" class="headerlink" title="2 推理过程"></a>2 推理过程</h4><p>  这里主要解决了双分支可能造成的冲突问题：</p><ul><li>实例间的重叠问题：以置信度高的为准</li><li>实例分割和语义分割的重叠：以实例分割为准</li><li>移除了语义分割中的<code>other</code>信息（前景），或者面积小于阈值的部分</li></ul><h4 id="3-实验细节"><a href="#3-实验细节" class="headerlink" title="3 实验细节"></a>3 实验细节</h4><h5 id="3-1-Loss-设计"><a href="#3-1-Loss-设计" class="headerlink" title="3.1 Loss 设计"></a>3.1 Loss 设计</h5><p>  实验的Loss由两大部分组成：$L_i$实例分割Loss + $L_s$语义分割Loss；<br>  其中，$L_i = L_c + L_b + L_m$，分别对应类别class，检测框bounding box，掩膜mask三个Loss。前两项用RoIs的数量来归一化，最后一项用前景RoIs的数量来归一化。<br>  $L_s$的语义分割Loss则是用标记像素数来归一化。<br>  整体的Loss是二者的加权求和：$L = \lambda_i(L_c+L_b+L_m)+\lambda_sL_s$，最后整体训练时候，$\lambda_i$和$\lambda_s$从${0.5, 0.75, 1}$中选，确保结果不会产生偏差。</p><h5 id="3-2-训练细节"><a href="#3-2-训练细节" class="headerlink" title="3.2 训练细节"></a>3.2 训练细节</h5><ul><li>COCO数据集上，采用默认的Mask R-CNN 训练，尺度放缩确保短边落在$[640, 800]$之间</li><li>Cityscape数据集上，尺度放缩在0.5倍到2.0倍之间，训练65000次迭代，学习率0.01，在40000和55000次衰减10倍；数据增强上采用了颜色增强和裁切。</li><li>预训练时，采用的是在ImageNet上训完，带有BN的ResNet/ResNeXt；fine-tune时，将BN换成affineChannel，可以加速收敛，可能提高性能。</li></ul><h5 id="3-3-实验结果"><a href="#3-3-实验结果" class="headerlink" title="3.3 实验结果"></a>3.3 实验结果</h5><p>基于ResNet-101的Panoptic FPN，在COCO上的PQ值为40.9，在Cityscapes上的指标为58.1。<br><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_5_result.png" alt="实验结果"></p><h4 id="4-其他内容"><a href="#4-其他内容" class="headerlink" title="4 其他内容"></a>4 其他内容</h4><ul><li>问：FPN是为了解决目标检测在多尺度上的精度问题，为什么语义头部可以加入？</li><li><p>答：语义分割需要(1)高分辨率来获取细节信息；(2) 编码足够丰富的语义；(3)多尺度信息来获得多种分辨率；而FPN的输出符合这些条件。（下表的实验结果也说明了这一点）<br><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_6_seghead3.png" alt="语义分支训练结果"></p><p>文章未说明内容：</p></li><li><p>语义分支的输入是FPN 256维度特征，但是上采样到1/4尺度后是128维，是在什么时候进行的降维操作。</p></li><li>模型loss的$\lambda_i$和$\lambda_s$分别是多少。</li></ul>]]></content>
     
@@ -63,9 +97,9 @@
       <category term="reading_notes" scheme="http://www.yvesxu.com/categories/reading-notes/"/>
     
     
-      <category term="读书笔记" scheme="http://www.yvesxu.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="机器学习" scheme="http://www.yvesxu.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="读书笔记" scheme="http://www.yvesxu.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -149,11 +183,11 @@
       <category term="codes" scheme="http://www.yvesxu.com/categories/codes/"/>
     
     
+      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
       <category term="深度学习" scheme="http://www.yvesxu.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="pytorch" scheme="http://www.yvesxu.com/tags/pytorch/"/>
-    
-      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
     
       <category term="目标检测" scheme="http://www.yvesxu.com/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
     
@@ -181,11 +215,11 @@
       <category term="codes" scheme="http://www.yvesxu.com/categories/codes/"/>
     
     
+      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
       <category term="深度学习" scheme="http://www.yvesxu.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="pytorch" scheme="http://www.yvesxu.com/tags/pytorch/"/>
-    
-      <category term="源码阅读" scheme="http://www.yvesxu.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
     
       <category term="目标检测" scheme="http://www.yvesxu.com/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
     
