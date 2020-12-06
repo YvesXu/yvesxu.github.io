@@ -250,7 +250,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -306,6 +306,108 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/12/01/20201201-papers-002/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/asset/avatar.jpg">
+      <meta itemprop="name" content="YvesXu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YvesXu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/01/20201201-papers-002/" class="post-title-link" itemprop="url">【全景分割论文阅读002 AUNet】 Attention-guided Unified Network for Panoptic Segmentation</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-01 10:08:27" itemprop="dateCreated datePublished" datetime="2020-12-01T10:08:27+08:00">2020-12-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-06 22:57:10" itemprop="dateModified" datetime="2020-12-06T22:57:10+08:00">2020-12-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/papers/" itemprop="url" rel="index"><span itemprop="name">papers</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/01/20201201-papers-002/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/01/20201201-papers-002/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文在Mask R-CNN的基础上加入了语义分支，实现了单个网络的全景分割架构。运用注意力模块，将前景特征融入背景特征中，在COCO验证集上的PQ指标达到46.5。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/01/20201201-papers-002/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/11/30/20201130-detectron2-03-builtin-datasets/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -330,10 +432,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-11-30 13:52:26 / 修改时间：14:50:03" itemprop="dateCreated datePublished" datetime="2020-11-30T13:52:26+08:00">2020-11-30</time>
+      <time title="创建时间：2020-11-30 13:52:26" itemprop="dateCreated datePublished" datetime="2020-11-30T13:52:26+08:00">2020-11-30</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-06 14:47:07" itemprop="dateModified" datetime="2020-12-06T14:47:07+08:00">2020-12-06</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -369,14 +477,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="1-内置数据集下载"><a href="#1-内置数据集下载" class="headerlink" title="1  内置数据集下载"></a>1  内置数据集下载</h3><p>detecrton2内置了一部分数据集的配置，包括：COCO的instance/ keypoint detectron，LVIS实例分割，citytscapes, Pascal VOC, ADE20k，以及Panoptic FPN 全景分割格式。</p>
-<p>这里以COCO2017和citytscapes的全景分割格式作为例子。<br>COCO下载地址：<a target="_blank" rel="noopener" href="https://cocodataset.org/#download">https://cocodataset.org/#download</a><br>cityscapes(需要登录)：<a target="_blank" rel="noopener" href="https://www.cityscapes-dataset.com/downloads/">https://www.cityscapes-dataset.com/downloads/</a></p>
-<p>如果下载速度慢的话，可以选择graviti（需要登陆）。<br>COCO：<a target="_blank" rel="noopener" href="https://www.graviti.cn/open-datasets/dataset-detail/COCO">https://www.graviti.cn/open-datasets/dataset-detail/COCO</a><br>cityscapes：<a target="_blank" rel="noopener" href="https://www.graviti.cn/open-datasets/dataset-detail/CityScapes">https://www.graviti.cn/open-datasets/dataset-detail/CityScapes</a></p>
-<h3 id="2-文件结构"><a href="#2-文件结构" class="headerlink" title="2 文件结构"></a>2 文件结构</h3><p>解压后，整个的文件结构如下，需要通过其他命令来生成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">detectron2/</span><br><span class="line">|---datasets/</span><br><span class="line">    |---cityscapes/</span><br><span class="line">        |---leftImg8bit/</span><br><span class="line">            |---train/</span><br><span class="line">            |---val/</span><br><span class="line">            |---<span class="built_in">test</span>/</span><br><span class="line">        |---gtFine/</span><br><span class="line">            |---cityscapes_panoptic_train.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_train/(生成)</span><br><span class="line">            |---cityscapes_panoptic_val.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_val/(生成)</span><br><span class="line">            |---cityscapes_panoptic_test.json(生成)</span><br><span class="line">            |---cityscapes_panoptic_test/(生成)</span><br><span class="line">            |---train/</span><br><span class="line">                |---aachen/</span><br><span class="line">                    |---*color.png</span><br><span class="line">                    |---*instanceIds.png</span><br><span class="line">                    |---*labelIds.png</span><br><span class="line">                    |---*labelTrainIds.png</span><br><span class="line">                    |---*polygons.json</span><br><span class="line">                    ...</span><br><span class="line">                ...</span><br><span class="line">            |---val/</span><br><span class="line">            |---<span class="built_in">test</span>/</span><br><span class="line">        |---cityscapesScripts-master/</span><br><span class="line">    |---coco/</span><br><span class="line">        |---annotations/</span><br><span class="line">            |---instances_train2017.json</span><br><span class="line">            |---instances_val2017.json</span><br><span class="line">            |---person_keypoints_train2017.json</span><br><span class="line">            |---person_keypoints_val2017.json</span><br><span class="line">            |---captions_train2017.json</span><br><span class="line">            |---captions_val2017.json</span><br><span class="line">            |---panoptic_train2017.json</span><br><span class="line">            |---panoptic_val2017.json</span><br><span class="line">        |---panoptic_stuff_train2017/(生成)</span><br><span class="line">        |---panoptic_stuff_val2017/(生成)</span><br><span class="line">        |---panoptic_train2017/</span><br><span class="line">        |---panoptic_val2017/</span><br><span class="line">        |---train2017/</span><br><span class="line">        |---val2017/</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-数据生成"><a href="#3-数据生成" class="headerlink" title="3 数据生成"></a>3 数据生成</h3><h4 id="3-1-COCO-的PanopticFPN"><a href="#3-1-COCO-的PanopticFPN" class="headerlink" title="3.1 COCO 的PanopticFPN"></a>3.1 COCO 的PanopticFPN</h4><p>在<code>datasets/</code>文件下，运行以下命令，生成COCO 的全景分割数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/cocodataset/panopticapi.git</span><br><span class="line">python prepare_panoptic_fpn.py</span><br></pre></td></tr></table></figure>
-<p>在<code>datasets/cityscapes/cityscapesScripts-master</code>文件夹中，运行以下命令，生成CityScapes 的全景分割数据：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/mcordts/cityscapesScripts.git</span><br><span class="line">CITYSCAPES_DATASET=/path/to/abovementioned/cityscapes python cityscapesscripts/preparation/createTrainIdLabelImgs.py</span><br><span class="line">CITYSCAPES_DATASET=/path/to/abovementioned/cityscapes python cityscapesscripts/preparation/createPanopticImgs.py</span><br></pre></td></tr></table></figure></p>
-<p>最后整体的目录就和上面一样。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/30/20201130-detectron2-03-builtin-datasets/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -434,7 +542,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-24 22:17:00" itemprop="dateModified" datetime="2020-11-24T22:17:00+08:00">2020-11-24</time>
+        <time title="修改时间：2020-12-06 22:20:47" itemprop="dateModified" datetime="2020-12-06T22:20:47+08:00">2020-12-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -470,7 +578,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>  本文通过在Mask R-CNN的基础上加入了语义分支，实现了单个网络的全景分割架构，PQ指标达到40.6，成为全景分割的baseline。</p>
+          <p>本文通过在Mask R-CNN的基础上加入了语义分支，实现了单个网络的全景分割架构，COCO测试集上的PQ指标达到40.9，成为全景分割的baseline。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/11/20201111-papers-001/#more" rel="contents">
@@ -536,7 +644,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-08 08:32:44" itemprop="dateModified" datetime="2020-11-08T08:32:44+08:00">2020-11-08</time>
+        <time title="修改时间：2020-12-06 14:46:55" itemprop="dateModified" datetime="2020-12-06T14:46:55+08:00">2020-12-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -575,81 +683,15 @@
           <h4 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h4><p>这个系列是AI“四大名著”之一《机器学习实战：基于 Scikit-Learn、Keras 和 TensorFlow（第二版）》的读书笔记系列，主要记录阅读过程中的知识点和一些思考。</p>
 <h4 id="1-第1章-机器学习概览"><a href="#1-第1章-机器学习概览" class="headerlink" title="1. 第1章 机器学习概览"></a>1. 第1章 机器学习概览</h4><h5 id="1-1-机器学习的定义"><a href="#1-1-机器学习的定义" class="headerlink" title="1.1 机器学习的定义"></a>1.1 机器学习的定义</h5><pre><code>一个计算机程序利用经验E来学习任务T，性能是P，如果针对任务T的性能P随着经验E不断增长，则称为机器学习。——Tom Mitchell 1997
 感觉这个说法也出现在了很多其他的教材里，也十分的工程化。就是针对任务T，通过经验E，寻求性能P的提升。
-</code></pre><h5 id="1-2-为什么使用机器学习"><a href="#1-2-为什么使用机器学习" class="headerlink" title="1.2 为什么使用机器学习"></a>1.2 为什么使用机器学习</h5><pre><code>与这个问题相对应的是：什么样的问题适合用机器学习来解决。主要包括以下几种：
-- 有解决方案的问题，但是可以通过机器学习算法来简化代码，或提升性能（书中给出的例子是垃圾邮件过滤，传统方法需要手工设计大量的规则来加以判断，且难以维护）
-- 传统方法难以解决的复杂问题(比如同音单词识别)
-- 环境有波动，适应新数据
-- 洞察复杂问题和大量数据，挖掘数据中的规律
-</code></pre><h5 id="1-3-机器学习的类型"><a href="#1-3-机器学习的类型" class="headerlink" title="1.3 机器学习的类型"></a>1.3 机器学习的类型</h5><table>
-    <tr>
-        <th>分类依据</th>
-        <th>类别</th>
-        <th>特点</th>
-        <th>具体算法或备注</th>
-    </tr>
-    <tr>
-        <td rowspan="4">有无监督信号</td>
-        <td>监督学习</td>
-        <td>提供了包含解决方案(标签/label/ground truth)的训练集，主要包含分类和回归两大类</td>
-        <td><li>k-近邻</li><li>线性回归</li><li>逻辑回归</li><li>SVM</li><li>决策树和随机森林</li></td>
-    </tr>
-    <tr>
-        <td>无监督学习</td>
-        <td>所有训练数据均未标记，主要包含聚类、异常检测和新颖性检测、可视化和降维、关联规则学习</td>
-        <td><li>聚类：k-means、DBSCAN、分层聚类分析HCA</li>
-        <li>异常检测和新颖性检测：单类SVM、孤立森林</li>
-        <li>可视化和降维：主成分分析(PCA)、核主成分分析、局部线性嵌入(LLE)、t-分布随机近邻嵌入(t-SNE)</li>
-        <li>关联规则学习：Apriori、Eclat</li></td>
-    </tr>
-    <tr>
-        <td>半监督学习</td>
-        <td>少量有标记数据和大量未标记数据，通常是有监督和无监督算法的组合</td>
-        <td><li>深度信念网络DBN</li></td>
-    </tr>
-    <tr>
-        <td>强化学习</td>
-        <td>通过观察环境，做出选择，执行动作，得到回报（或惩罚）</td>
-        <td><li>Q-learning</li><li>Sarsa</li></td>
-    </tr>
-    <tr>
-        <td rowspan="2">是否进行增量学习</td>
-        <td>批量学习</td>
-        <td>离线进行训练后，部署至生存环境，因此是在完整数据集上训练；遇到新的数据后，需要在新的完整数据集上重新训练，停用旧系统，启用新系统。 </td>
-        <td>缺点：耗时占资源，每次训练需要完整数据集训练几个小时，且完整数据集训练需要大量计算资源</td>
-    </tr>
-    <tr>
-        <td>在线学习</td>
-        <td>可以根据新数据进入不断学习调整模型，每次只学习新数据，完成后即可丢弃数据</td>
-        <td><li>核外学习：针对超大数据集，存储在不同计算机上，每次只加载部分数据进行学习，直至完成整个数据集训练，这个过程通常是<font color=#0087BB>离线</font>的</li><li>在线学习: 由于模型需要根据新数据进行调整，则需要设置学习率，来决定适应新数据（忘记旧数据）的速度，同时也要求<font color=#0087BB>监控异常数据</font></li></td>
-    </tr>
-    <tr>
-        <td rowspan="2">模型泛化模式</td>
-        <td>基于实例的学习</td>
-        <td>记住学过的所有数据，将新数据与已学过的数据进行比对，根据相似度来给出预测结果</td>
-        <td>需要选择多少个最近邻的实例</td>
-    </tr>
-    <tr>
-        <td>基于模型的学习</td>
-        <td>通过数据构建相应的模型（找出数据中的规律），然后根据模型对新数据进行预测</td>
-        <td>超参数：模型的复杂度；参数：训练过程的求解结果；目标函数：训练过程中的优化目标</td>
-    </tr>
-</table>
-
-
-<h5 id="1-4-机器学习的主要挑战及解决方法"><a href="#1-4-机器学习的主要挑战及解决方法" class="headerlink" title="1.4 机器学习的主要挑战及解决方法"></a>1.4 机器学习的主要挑战及解决方法</h5><pre><code>- 数据问题
-    - 数据数量不足：构建更大的数据集
-    - 数据不具有代表性（采样偏差）：改进采样方法
-    - 低质量数据（噪声、错误和异常值等）：丢弃异常值，忽略/修复缺失的部分特征
-    - 无关特征：特征选择，特征提取，收集新数据
-- 训练过程
-    - 过拟合：选择更小参数的模型/减少数据中的属性数量/约束模型（正则化）；收集更多数据；减少数据中的噪声
-    - 欠拟合：选择更多参数的模型；提供更好的特征集（更加容易学习）；减少模型中的约束    
-</code></pre><h5 id="1-5-测试与验证"><a href="#1-5-测试与验证" class="headerlink" title="1.5 测试与验证"></a>1.5 测试与验证</h5><pre><code>- 测试集：为了确保模型在生产环境中的可靠性，将数据集分割成训练集和测试集，用测试集来评估模型。
-- 验证集(dev/val set)：如果选出测试集表现最好的模型，则可能是对测试集部分的过拟合，实际环境中表现不如预期。因此从训练集中再分割出一部分作为验证集，用验证集来挑选模型，测试集来评估模型。
-- 训练开发集合(train-dev set)：在数据缺乏的情况下，可以采用其他相近数据来代替，但是由于数据来源不同，可能出现训练集测试集&lt;font color=#0087BB&gt;数据不匹配(mismatch)&lt;/font&gt;的情况，因此将真实场景数据划分为验证集和测试集，而训练集数据划分为训练集和训练开发集（验证集）：
-    - 如果在训练开发集表现较差，代表模型过拟合；
-    - 如果在训练开发集表现较好，而验证集表现差，则问题来自数据不匹配，需要对数据进行处理。 
 </code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/07/20201107-skt-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
