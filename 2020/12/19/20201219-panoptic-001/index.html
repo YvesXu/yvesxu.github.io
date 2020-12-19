@@ -22,17 +22,22 @@
     var CONFIG = {"hostname":"www.yvesxu.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YvesXu">
-<meta property="og:url" content="http://www.yvesxu.com/tags/%E6%A0%91/index.html">
+  <meta name="description" content="正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是:  [论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读] 后面会每周进行更新，欢迎大家关注。 项目地址：https:&#x2F;&#x2F;github.com&#x2F;YvesXu&#x2F;panoptic-segmentation-paper-list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全景分割论文跟踪">
+<meta property="og:url" content="http://www.yvesxu.com/2020/12/19/20201219-panoptic-001/index.html">
 <meta property="og:site_name" content="YvesXu">
+<meta property="og:description" content="正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是:  [论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读] 后面会每周进行更新，欢迎大家关注。 项目地址：https:&#x2F;&#x2F;github.com&#x2F;YvesXu&#x2F;panoptic-segmentation-paper-list">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-19T13:13:40.000Z">
+<meta property="article:modified_time" content="2020-12-19T13:31:07.585Z">
 <meta property="article:author" content="YvesXu">
-<meta property="article:tag" content="算法, 计算机视觉, 深度学习, Detectron2,">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="全景分割">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.yvesxu.com/tags/%E6%A0%91/">
+<link rel="canonical" href="http://www.yvesxu.com/2020/12/19/20201219-panoptic-001/">
 
 
 <script class="page-configurations">
@@ -40,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 树 | YvesXu</title>
+  <title>全景分割论文跟踪 | YvesXu</title>
   
 
 
@@ -294,58 +299,165 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">树
-          <small>标签</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/12/19/20201219-panoptic-001/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/asset/avatar.jpg">
+      <meta itemprop="name" content="YvesXu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YvesXu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          全景分割论文跟踪
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+      <time title="创建时间：2020-12-19 21:13:40 / 修改时间：21:31:07" itemprop="dateCreated datePublished" datetime="2020-12-19T21:13:40+08:00">2020-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/papers/" itemprop="url" rel="index"><span itemprop="name">papers</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/19/20201219-panoptic-001/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/19/20201219-panoptic-001/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是: </p>
+<p><strong>[论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读]</strong></p>
+<p>后面会每周进行更新，欢迎大家关注。</p>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/YvesXu/panoptic-segmentation-paper-list">https://github.com/YvesXu/panoptic-segmentation-paper-list</a></p>
+<a id="more"></a>
+<p>目前一共统计了60篇论文，其中针对全景分割任务有42篇，已发表24篇，未发表18篇(2020年占14篇)，等接下来的结果出来，估计这里面也有很多会变成已发表。</p>
+<p>项目中论文排序优先级：</p>
+<ol>
+<li>已经发表的会议论文</li>
+<li>已发表的其他论文</li>
+<li>未发表的论文</li>
+</ol>
+<p>同级别的论文按照年份，以及arXiv编号倒序排列，目前benchmark还没有更新。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-09-28T12:20:30+08:00"
-              content="2020-09-28">
-          09-28
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/asset/wechatpay.png" alt="YvesXu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/asset/alipay.png" alt="YvesXu 支付宝">
+        <span>支付宝</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/09/28/20200928-alg-01-tree-01/" itemprop="url">
-            <span itemprop="name">算法学习001  树的概念与常见算法 01</span>
+  </div>
+</div>
+
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/asset/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
           </a>
-      </div>
-
-      
-    </header>
-  </article>
-
+        </div>
     </div>
   </div>
-  
-  
-  
 
-  
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/%E5%85%A8%E6%99%AF%E5%88%86%E5%89%B2/" rel="tag"># 全景分割</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/01/20201201-papers-002/" rel="prev" title="【全景分割论文阅读002 AUNet】 Attention-guided Unified Network for Panoptic Segmentation">
+                  <i class="fa fa-chevron-left"></i> 【全景分割论文阅读002 AUNet】 Attention-guided Unified Network for Panoptic Segmentation
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
 
 
 
       
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -440,7 +552,7 @@ NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
     new Valine(Object.assign({"enable":true,"appId":"JQn2vyh8yvpLllIisY0QSEtI-gzGzoHsz","appKey":"8Evf2j6TqDnpLJtrA7PJCvJc","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
       el: '#valine-comments',
-      path: "/tags/%E6%A0%91/",
+      path: "/2020/12/19/20201219-panoptic-001/",
       serverURLs: "https://jqn2vyh8.api.lncldglobal.com"
     }));
   }, window.Valine);

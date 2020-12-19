@@ -250,7 +250,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -306,6 +306,105 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/12/19/20201219-panoptic-001/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/asset/avatar.jpg">
+      <meta itemprop="name" content="YvesXu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YvesXu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/19/20201219-panoptic-001/" class="post-title-link" itemprop="url">全景分割论文跟踪</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-12-19 21:13:40 / 修改时间：21:31:07" itemprop="dateCreated datePublished" datetime="2020-12-19T21:13:40+08:00">2020-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/papers/" itemprop="url" rel="index"><span itemprop="name">papers</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/19/20201219-panoptic-001/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/19/20201219-panoptic-001/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是: </p>
+<p><strong>[论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读]</strong></p>
+<p>后面会每周进行更新，欢迎大家关注。</p>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/YvesXu/panoptic-segmentation-paper-list">https://github.com/YvesXu/panoptic-segmentation-paper-list</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/19/20201219-panoptic-001/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.yvesxu.com/2020/12/01/20201201-papers-002/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -338,7 +437,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-06 22:57:10" itemprop="dateModified" datetime="2020-12-06T22:57:10+08:00">2020-12-06</time>
+        <time title="修改时间：2020-12-10 15:26:06" itemprop="dateModified" datetime="2020-12-10T15:26:06+08:00">2020-12-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -374,7 +473,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>本文在Mask R-CNN的基础上加入了语义分支，实现了单个网络的全景分割架构。运用注意力模块，将前景特征融入背景特征中，在COCO验证集上的PQ指标达到46.5。</p>
+          <p>本文在Mask R-CNN的基础上加入了语义分支，实现了单个网络的全景分割架构。运用注意力模块，将前景特征融入背景特征中，ResNeXt-152-FPN版本在COCO 2018 test-dev上的PQ指标达到46.5；ResNet-101-FPN在CityScapes上的PQ指标为59.0。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/12/01/20201201-papers-002/#more" rel="contents">
@@ -542,7 +641,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-06 22:20:47" itemprop="dateModified" datetime="2020-12-06T22:20:47+08:00">2020-12-06</time>
+        <time title="修改时间：2020-12-07 13:39:28" itemprop="dateModified" datetime="2020-12-07T13:39:28+08:00">2020-12-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -644,7 +743,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-06 14:46:55" itemprop="dateModified" datetime="2020-12-06T14:46:55+08:00">2020-12-06</time>
+        <time title="修改时间：2020-12-07 18:40:01" itemprop="dateModified" datetime="2020-12-07T18:40:01+08:00">2020-12-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

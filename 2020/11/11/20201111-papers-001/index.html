@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_4_seghead2.png">
 <meta property="og:image" content="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_5_result.png">
 <meta property="article:published_time" content="2020-11-11T06:32:19.000Z">
-<meta property="article:modified_time" content="2020-12-06T14:20:47.880Z">
+<meta property="article:modified_time" content="2020-12-07T05:39:28.193Z">
 <meta property="article:author" content="YvesXu">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="全景分割">
@@ -261,7 +261,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -349,7 +349,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-06 22:20:47" itemprop="dateModified" datetime="2020-12-06T22:20:47+08:00">2020-12-06</time>
+        <time title="修改时间：2020-12-07 13:39:28" itemprop="dateModified" datetime="2020-12-07T13:39:28+08:00">2020-12-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -391,7 +391,7 @@
 <h4 id="1-网络架构"><a href="#1-网络架构" class="headerlink" title="1 网络架构"></a>1 网络架构</h4><p>整个网络由4个模块组成: ResNet + FPN + Instance Segmentation Branch + Semantic Segmentation Branch。 从下图中可以看出，网络采用了ResNet + FPN的结构，实例分割选择了Mask R-CNN的结构，语义分割则是在FPN的结构上进行多尺度信息融合后得到的结果。</p>
 <p>整个网络的精度基本上等同于两个单独训练的FPN网络，但是内存和计算量只有一半。即在同等计算下，一个联合的网络得到了两个独立网络的效果。</p>
 <p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_1_architecture.png" alt="网络结构"></p>
-<p>Mask R-CNN部分不再赘述，论文中详细介绍了语义分支的模块设计，如下图。 对于FPN提取出来的特征[P2, P3, P4, P5]，统一放大至1/4尺度后，进行累加，最后再通过卷积得到语义分割结果。图中的<code>conv-&gt;2x</code>包含了[<code>3×3</code>卷积 + <code>group norm</code> + <code>ReLu</code> + <code>2× bilinear upsamleing</code>]，最后将这四层特征逐元素相加，并通过<code>1×1</code>卷积和<code>4× bilinear upsamleing</code> + <code>softmax</code>，得到了最后语义分割的结果。</p>
+<p>Mask R-CNN部分不再赘述，论文中详细介绍了语义分支的模块设计，如下图。 对于FPN提取出来的特征[P2, P3, P4, P5]，统一放大至1/4尺度后，进行累加，最后再通过卷积得到语义分割结果。图中的<code>conv-&gt;2x</code>包含了[<code>3×3</code>卷积 + <code>group norm</code> + <code>ReLu</code> + <code>2× bilinear upsampling</code>]，最后将这四层特征逐元素相加，并通过<code>1×1</code>卷积和<code>4× bilinear upsampling</code> + <code>softmax</code>，得到了最后语义分割的结果。</p>
 <p>注意，这里的语义分割只分割了背景，前景统一标注成<code>other</code>类。</p>
 <p><img src="http://hexotuchuang.oss-cn-beijing.aliyuncs.com/blog_init/post/papers/20201123_panoptic_fpn_2_seghead.png" alt="语义分支"></p>
 <p>  文章中还下图中不同的语义分支结构的计算量和效率，并进行了对比。</p>
