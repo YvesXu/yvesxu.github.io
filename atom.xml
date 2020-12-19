@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yvesxu.com/"/>
-  <updated>2020-12-19T13:31:07.585Z</updated>
+  <updated>2020-12-19T13:37:22.108Z</updated>
   <id>http://www.yvesxu.com/</id>
   
   <author>
@@ -18,19 +18,20 @@
   
   <entry>
     <title>全景分割论文跟踪</title>
-    <link href="http://www.yvesxu.com/2020/12/19/20201219-panoptic-001/"/>
-    <id>http://www.yvesxu.com/2020/12/19/20201219-panoptic-001/</id>
+    <link href="http://www.yvesxu.com/2020/12/19/20201219-papers-003/"/>
+    <id>http://www.yvesxu.com/2020/12/19/20201219-papers-003/</id>
     <published>2020-12-19T13:13:40.000Z</published>
-    <updated>2020-12-19T13:31:07.585Z</updated>
+    <updated>2020-12-19T13:37:22.108Z</updated>
     
-    <content type="html"><![CDATA[<p>正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是: </p><p><strong>[论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读]</strong></p><p>后面会每周进行更新，欢迎大家关注。</p><p>项目地址：<a href="https://github.com/YvesXu/panoptic-segmentation-paper-list">https://github.com/YvesXu/panoptic-segmentation-paper-list</a></p><a id="more"></a><p>目前一共统计了60篇论文，其中针对全景分割任务有42篇，已发表24篇，未发表18篇(2020年占14篇)，等接下来的结果出来，估计这里面也有很多会变成已发表。</p><p>项目中论文排序优先级：</p><ol><li>已经发表的会议论文</li><li>已发表的其他论文</li><li>未发表的论文</li></ol><p>同级别的论文按照年份，以及arXiv编号倒序排列，目前benchmark还没有更新。</p>]]></content>
+    <content type="html"><![CDATA[<p>正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是: </p><p><strong>[论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读]</strong></p><p>后面会每周进行更新，欢迎大家关注。</p><p>项目地址：<a href="https://github.com/YvesXu/panoptic-segmentation-paper-list">https://github.com/YvesXu/panoptic-segmentation-paper-list</a></p><p>目前一共统计了60篇论文，其中针对全景分割任务有42篇，已发表24篇，未发表18篇(2020年占14篇)，等接下来的结果出来，估计这里面也有很多会变成已发表。</p><p>项目中论文排序优先级：</p><ol><li>已经发表的会议论文</li><li>已发表的其他论文</li><li>未发表的论文</li></ol><p>同级别的论文按照年份，以及arXiv编号倒序排列，目前benchmark还没有更新。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是: &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;[论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读]&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;后面会每周进行更新，欢迎大家关注。&lt;/p&gt;
-&lt;p&gt;项目地址：&lt;a href=&quot;https://github.com/YvesXu/panoptic-segmentation-paper-list&quot;&gt;https://github.com/YvesXu/panoptic-segmentation-paper-list&lt;/a&gt;&lt;/p&gt;
+      
+      
+        &lt;p&gt;正好在做全景分割任务的文献调研，顺手把调研结果整理了一下（目前截至2020年12月19日），以及其他涉及到全景分割的论文。项目里按照发表刊物分类，格式是: &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[论文名称 | 发表刊物 | 论文地址 | 开源代码 | 博客解读]&lt;/strong&gt;
+      
     
     </summary>
     
